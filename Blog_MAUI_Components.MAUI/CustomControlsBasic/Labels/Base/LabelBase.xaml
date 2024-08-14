@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      RowDefinitions="Auto,Auto"
+      x:Class="Blog_MAUI_Components.MAUI.CustomControlsBasic.Labels.Base.LabelBase">
+    
+    <HorizontalStackLayout VerticalOptions="Start">
+        <Label x:Name="RequiredLabel" 
+               Text="*"
+               Style="{StaticResource BaseRequiredLabelLabel}" />
+
+        <Label x:Name="LabelLabel"
+               Style="{StaticResource BaseLabelLabel}" />
+    </HorizontalStackLayout>
+    
+    <Border x:Name="BorderLabel" Grid.Row="1"
+            Style="{StaticResource BaseBorderBasic}" />
+          
+</Grid>
