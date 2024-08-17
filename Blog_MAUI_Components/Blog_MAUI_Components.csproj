@@ -24,7 +24,7 @@
         <ApplicationTitle>Blog_MAUI_Components</ApplicationTitle>
 
         <!-- App Identifier -->
-        <ApplicationId>com.companyname.blog_maui_components</ApplicationId>
+        <ApplicationId>com.stephanarnas.blog_maui_components</ApplicationId>
 
         <!-- Versions -->
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -57,9 +57,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
-        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.70" />
-        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
+        <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.80" />
+        <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.80" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0"/>
     </ItemGroup>
 
