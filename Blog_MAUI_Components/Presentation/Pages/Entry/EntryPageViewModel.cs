@@ -12,6 +12,9 @@ public partial class EntryPageViewModel : ViewModelBase
     private readonly ILogger<EntryPageViewModel> _logger;
     
     [ObservableProperty]
+    private string? _fullName;
+    
+    [ObservableProperty]
     private string? _email;
 
     [ObservableProperty]
