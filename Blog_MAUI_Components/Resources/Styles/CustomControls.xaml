@@ -22,24 +22,12 @@
         <Setter Property="TextColor" Value="{StaticResource Danger }" />
         <Setter Property="Margin" Value="4, 0, -4, 0" />
     </Style>
-
+    
     <Style x:Key="BaseBorder" TargetType="Border">
         <Setter Property="Padding" Value="8, 4" />
         <Setter Property="Stroke" Value="Transparent" />
         <Setter Property="StrokeShape" Value="RoundRectangle 4" />
         <Setter Property="StrokeThickness" Value="0" />
-    </Style>
-    
-    <Style x:Key="BaseBorderBasic" TargetType="Border">
-        <Setter Property="Padding" Value="8, 4" />
-        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
-        <Setter Property="StrokeShape" Value="RoundRectangle 8" />
-        <Setter Property="StrokeThickness" Value="1" />
-    </Style>
-    
-    <Style x:Key="LabelLabel" TargetType="Label">
-        <Setter Property="FontSize" Value="14" />
-        <Setter Property="TextColor" Value="{StaticResource Gray500}" />
     </Style>
 
 </ResourceDictionary>
