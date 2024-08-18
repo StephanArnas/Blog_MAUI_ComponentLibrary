@@ -11,4 +11,14 @@ public static class ResourceHelper
 
         throw new InvalidOperationException($"key {key} not found in the resource dictionary");
     }
+    
+    public static Color GetThemeColor(string lightKey, string darkKey)
+    {
+        return Application.Current!.RequestedTheme switch
+        {
+            AppTheme.Dark => GetResource<Color>(darkKey),
+            AppTheme.Light => GetResource<Color>(lightKey),
+            _ => GetResource<Color>(lightKey)
+        };
+    }
 }
