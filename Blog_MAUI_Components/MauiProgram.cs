@@ -29,7 +29,7 @@ public static class MauiProgram
         ApplyStyleCustomization();
         
         // Register your pages.
-        Routing.RegisterRoute(RouteConstants.EntryPage, typeof(EntryPage));
+        builder.Services.AddTransientWithShellRoute<EntryPage, EntryPageViewModel>(RouteConstants.EntryPage);
 
         return builder.Build();
     }

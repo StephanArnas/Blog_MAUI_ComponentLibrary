@@ -37,11 +37,31 @@ public partial class LabelBase
         get => (string)GetValue(LabelProperty);
         set => SetValue(LabelProperty, value);
     }
+    
+    public static readonly BindableProperty InfoProperty = BindableProperty.Create("Info",
+        typeof(string), typeof(LabelBase), propertyChanged: InfoChanged);
+
+    public string Info
+    {
+        get => (string)GetValue(InfoProperty);
+        set => SetValue(InfoProperty, value);
+    }
+
+    public static readonly BindableProperty ErrorProperty = BindableProperty.Create("Error",
+        typeof(string), typeof(LabelBase), propertyChanged: ErrorChanged);
+
+    public string Error
+    {
+        get => (string)GetValue(ErrorProperty);
+        set => SetValue(ErrorProperty, value);
+    }
 
     private static void ElementChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateElementView();
     private static void IsRequiredChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateIsRequiredView();
     private static void LabelChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateLabelView();
-    
+    private static void InfoChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateInfoView();
+    private static void ErrorChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateErrorView();
+
     private void UpdateElementView()
     {
         BorderLabel.Content = View;
@@ -59,6 +79,19 @@ public partial class LabelBase
         LabelLabel.IsVisible = !string.IsNullOrEmpty(Label);
     }
     
+    private void UpdateInfoView()
+    {
+        InfoLabel.Text = Info;
+        InfoLabel.IsVisible = !string.IsNullOrEmpty(Info);
+    }
+
+    private void UpdateErrorView()
+    {
+        ErrorLabel.Text = Error;
+        ErrorLabel.IsVisible = !string.IsNullOrEmpty(Error);
+        BorderCanvasView.InvalidateSurface(); // Repaint when binding context changes
+    }
+    
     protected override void OnBindingContextChanged()
     {
         base.OnBindingContextChanged();
@@ -73,10 +106,13 @@ public partial class LabelBase
         var paint = new SKPaint
         {
             Style = SKPaintStyle.Stroke,
-            Color = ResourceHelper.GetThemeColor("Gray900", "Gray100").ToSKColor(),
             StrokeWidth = 3,
             IsAntialias = true // Smooth edges
         };
+        
+        paint.Color = !string.IsNullOrEmpty(ErrorLabel.Text) 
+            ? ResourceHelper.GetResource<Color>("Danger").ToSKColor() 
+            : ResourceHelper.GetThemeColor("Gray900", "Gray100").ToSKColor();
 
         const float radius = 20f; // Corner radius
         const float labelExtraSpace = 8; // Fixed length for the segment

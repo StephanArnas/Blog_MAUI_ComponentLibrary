@@ -6,7 +6,7 @@
     x:Class="Blog_MAUI_Components.MAUI.CustomControls.Labels.EntryLabel">
     
     <base:LabelBase.View>
-        <Entry x:Name="Element"  />
+        <Entry x:Name="Element" />
     </base:LabelBase.View>
     
 </base:LabelBase>

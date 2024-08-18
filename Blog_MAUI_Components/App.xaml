@@ -1,6 +1,7 @@
 ﻿<?xml version = "1.0" encoding = "UTF-8" ?>
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:Blog_MAUI_Components.MAUI.Converters;assembly=Blog_MAUI_Components.MAUI"
              x:Class="Blog_MAUI_Components.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -10,7 +11,10 @@
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
                 <!--  The order does not matter on the rest of the styles  -->
                 <ResourceDictionary Source="Resources/Styles/CustomControls.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Buttons.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Layouts.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <converters:ShowErrorConverter x:Key="ShowErrorConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
