@@ -12,7 +12,7 @@
     </Style>
 
     <Style x:Key="BaseLabelLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource Gray900 }" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="FontAttributes" Value="Bold"/>
         <Setter Property="Margin" Value="0, 4, 0, 4" />
@@ -32,7 +32,7 @@
     
     <Style x:Key="BaseBorderBasic" TargetType="Border">
         <Setter Property="Padding" Value="8, 4" />
-        <Setter Property="Stroke" Value="{StaticResource Gray900}" />
+        <Setter Property="Stroke" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
         <Setter Property="StrokeShape" Value="RoundRectangle 8" />
         <Setter Property="StrokeThickness" Value="1" />
     </Style>

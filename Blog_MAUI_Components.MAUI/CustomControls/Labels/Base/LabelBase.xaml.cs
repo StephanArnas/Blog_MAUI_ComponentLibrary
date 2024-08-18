@@ -73,7 +73,7 @@ public partial class LabelBase
         var paint = new SKPaint
         {
             Style = SKPaintStyle.Stroke,
-            Color = ResourceHelper.GetResource<Color>("Gray900").ToSKColor(), // Default border color
+            Color = ResourceHelper.GetThemeColor("Gray900", "Gray100").ToSKColor(),
             StrokeWidth = 3,
             IsAntialias = true // Smooth edges
         };
