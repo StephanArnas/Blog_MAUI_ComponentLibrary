@@ -1,9 +1,9 @@
 using Blog_MAUI_Components.Presentation.Common;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using FluentValidation.Results;
 using Microsoft.Extensions.Logging;
-using Sharpnado.TaskLoaderView;
 
 namespace Blog_MAUI_Components.Presentation.Pages.Entry;
 
@@ -20,14 +20,10 @@ public partial class EntryPageViewModel : ViewModelBase
     [ObservableProperty]
     private ValidationResult? _validationResult;
     
-    public TaskLoaderCommand SaveCommand { get; }
-    
     public EntryPageViewModel(
         ILogger<EntryPageViewModel> logger)
     {
         _logger = logger;
-
-        SaveCommand = new TaskLoaderCommand(SaveAsync);
 
         _logger.LogInformation("Building EntryPageViewModel");
     }
@@ -51,9 +47,10 @@ public partial class EntryPageViewModel : ViewModelBase
         base.OnDisappearing();
     }
     
-    private async Task SaveAsync()
+    [RelayCommand]
+    private async Task Save()
     {
-        _logger.LogInformation("SaveAsync()");
+        _logger.LogInformation("Save()");
         
         var validator = new EntryPageViewModelValidator();
         ValidationResult = await validator.ValidateAsync(this);

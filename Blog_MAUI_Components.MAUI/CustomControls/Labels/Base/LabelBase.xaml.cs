@@ -110,7 +110,7 @@ public partial class LabelBase
             IsAntialias = true // Smooth edges
         };
         
-        paint.Color = !string.IsNullOrEmpty(ErrorLabel.Text) 
+        paint.Color = !string.IsNullOrEmpty(Error) 
             ? ResourceHelper.GetResource<Color>("Danger").ToSKColor() 
             : ResourceHelper.GetThemeColor("Gray900", "Gray100").ToSKColor();
 
