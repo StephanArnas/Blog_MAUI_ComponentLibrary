@@ -19,14 +19,18 @@
                 <ccl:EntryLabel
                     Label="First name or Last name"
                     Text="{Binding FullName, Mode=TwoWay}"
-                    Error="{Binding ValidationResult, Converter={StaticResource ShowErrorConverter}, ConverterParameter='FullName'}"
+                    Error="{Binding ValidationResult, 
+                        Converter={StaticResource ShowErrorConverter}, 
+                        ConverterParameter={x:Static page:EntryPageViewModelValidator.FullNameProperty}}"
                     IsRequired="True"
                     Placeholder="John Doe" />
 
                 <ccl:EntryLabel
                     Label="Email"
                     Text="{Binding Email, Mode=TwoWay}"
-                    Error="{Binding ValidationResult, Converter={StaticResource ShowErrorConverter}, ConverterParameter='Email'}"
+                    Error="{Binding ValidationResult, 
+                        Converter={StaticResource ShowErrorConverter}, 
+                        ConverterParameter={x:Static page:EntryPageViewModelValidator.EmailProperty}}"
                     IsRequired="True"
                     Info="We will never share your email with anyone"
                     Placeholder="E.g: john.doe@gmail.com"
