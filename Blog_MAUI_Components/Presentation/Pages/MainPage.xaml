@@ -9,8 +9,13 @@
             Spacing="25">
             
             <Button
-                Text="Entry" 
+                Text="Entry Demo" 
                 Clicked="GoToEntryPage"
+                HorizontalOptions="Fill" />
+            
+            <Button
+                Text="Label Demo" 
+                Clicked="GoToLabelPage"
                 HorizontalOptions="Fill" />
             
         </VerticalStackLayout>

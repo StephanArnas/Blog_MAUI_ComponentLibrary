@@ -1,33 +1,4 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     
-    <!--  BaseLabel  -->
-
-    <Style x:Key="BaseLabel" TargetType="Label">
-        <Setter Property="Padding" Value="4, 0" />
-        <Setter Property="Margin" Value="12, 0, 0, 0" />
-        <Setter Property="FontSize" Value="12" />
-        <Setter Property="HorizontalOptions" Value="Start" />
-        <Setter Property="VerticalOptions" Value="Start" />
-    </Style>
-
-    <Style x:Key="BaseLabelLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="FontAttributes" Value="Bold"/>
-        <Setter Property="Margin" Value="0, 4, 0, 4" />
-    </Style>
-    
-    <Style x:Key="BaseRequiredLabelLabel" BasedOn="{StaticResource BaseLabelLabel}" TargetType="Label">
-        <Setter Property="TextColor" Value="{StaticResource Danger }" />
-        <Setter Property="Margin" Value="4, 0, -4, 0" />
-    </Style>
-    
-    <Style x:Key="BaseBorder" TargetType="Border">
-        <Setter Property="Padding" Value="8, 4" />
-        <Setter Property="Stroke" Value="Transparent" />
-        <Setter Property="StrokeShape" Value="RoundRectangle 4" />
-        <Setter Property="StrokeThickness" Value="0" />
-    </Style>
-
 </ResourceDictionary>

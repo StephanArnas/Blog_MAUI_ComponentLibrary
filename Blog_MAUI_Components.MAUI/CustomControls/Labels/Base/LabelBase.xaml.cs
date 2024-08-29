@@ -56,11 +56,21 @@ public partial class LabelBase
         set => SetValue(ErrorProperty, value);
     }
 
+    public static readonly BindableProperty ShowLoaderProperty = BindableProperty.Create("ShowLoader",
+        typeof(bool), typeof(LabelBase), defaultValue: false, propertyChanged: ShowLoaderChanged);
+
+    public bool ShowLoader
+    {
+        get => (bool)GetValue(ShowLoaderProperty);
+        set => SetValue(ShowLoaderProperty, value);
+    }
+
     private static void ElementChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateElementView();
     private static void IsRequiredChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateIsRequiredView();
     private static void LabelChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateLabelView();
     private static void InfoChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateInfoView();
     private static void ErrorChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateErrorView();
+    private static void ShowLoaderChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateShowLoaderView();
 
     private void UpdateElementView()
     {
@@ -89,12 +99,22 @@ public partial class LabelBase
     {
         ErrorLabel.Text = Error;
         ErrorLabel.IsVisible = !string.IsNullOrEmpty(Error);
-        BorderCanvasView.InvalidateSurface(); // Repaint when binding context changes
+        InvalidateSurface();
+    }
+
+    private void UpdateShowLoaderView()
+    {
+        LoaderActivityIndicator.IsVisible = ShowLoader;
     }
     
     protected override void OnBindingContextChanged()
     {
         base.OnBindingContextChanged();
+        InvalidateSurface();
+    }
+
+    protected void InvalidateSurface()
+    {
         BorderCanvasView.InvalidateSurface(); // Repaint when binding context changes
     }
     

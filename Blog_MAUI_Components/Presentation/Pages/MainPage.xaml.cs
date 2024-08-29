@@ -13,4 +13,9 @@ public partial class MainPage
     {
         await Shell.Current.GoToAsync(RouteConstants.EntryPage);
     }
+    
+    private async void GoToLabelPage(object? sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync(RouteConstants.LabelPage);
+    }
 }

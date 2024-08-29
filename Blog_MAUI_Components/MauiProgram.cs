@@ -1,9 +1,14 @@
-﻿using Blog_MAUI_Components.MAUI;
+﻿using Blog_MAUI_Components.Infrastructure;
+using Blog_MAUI_Components.MAUI;
 using Blog_MAUI_Components.Presentation.Common;
 using Blog_MAUI_Components.Presentation.Pages.Entry;
+using Blog_MAUI_Components.Presentation.Pages.Label;
+using Blog_MAUI_Components.Presentation.Pages.Search;
+using Blog_MAUI_Components.Services;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
+using LabelPageViewModel = Blog_MAUI_Components.Presentation.Pages.Label.LabelPageViewModel;
 
 namespace Blog_MAUI_Components;
 
@@ -26,10 +31,15 @@ public static class MauiProgram
         builder.Logging.AddDebug();
 #endif
 
+        builder.Services.AddInfrastructure();
+        builder.Services.AddServices();
+
         ApplyStyleCustomization();
         
         // Register your pages.
         builder.Services.AddTransientWithShellRoute<EntryPage, EntryPageViewModel>(RouteConstants.EntryPage);
+        builder.Services.AddTransientWithShellRoute<LabelPage, LabelPageViewModel>(RouteConstants.LabelPage);
+        builder.Services.AddTransientWithShellRoute<CitySearchPage, CitySearchPageViewModel>(RouteConstants.CitySearchPage);
 
         return builder.Build();
     }

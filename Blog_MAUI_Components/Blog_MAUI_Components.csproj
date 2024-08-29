@@ -100,7 +100,10 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Blog_MAUI_Components.Application\Blog_MAUI_Components.Application.csproj" />
+      <ProjectReference Include="..\Blog_MAUI_Components.Infrastructure\Blog_MAUI_Components.Infrastructure.csproj" />
       <ProjectReference Include="..\Blog_MAUI_Components.MAUI\Blog_MAUI_Components.MAUI.csproj" />
+      <ProjectReference Include="..\Blog_MAUI_Components.Services\Blog_MAUI_Components.Services.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:ContentPageBase
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ccl="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels;assembly=Blog_MAUI_Components.MAUI"
+    xmlns:base="clr-namespace:Blog_MAUI_Components.Presentation.Common"
+    xmlns:page="clr-namespace:Blog_MAUI_Components.Presentation.Pages.Label"
+    Title="Label Demo"
+    x:DataType="page:LabelPageViewModel"
+    x:Class="Blog_MAUI_Components.Presentation.Pages.Label.LabelPage">
+
+    <Grid RowDefinitions="*,Auto" >
+        <ScrollView>
+            <VerticalStackLayout
+                Margin="16, 32"
+                Spacing="25">
+                
+                <ccl:LabelLabel
+                    Label="City of Birth" 
+                    Text="{Binding CityOfBirth.Name}"
+                    TapCommand="{Binding GoToCityOfBirthSearchCommand}"
+                    IsRequired="True"/>
+                
+                <ccl:LabelLabel
+                    Label="City of Residence " 
+                    Text="{Binding CityOfResidence.Name}"
+                    TapCommand="{Binding GoToCityOfResidenceSearchCommand}"
+                    ShowLoader="{Binding IsLoading}"
+                    IsRequired="True"/>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+        
+        <VerticalStackLayout Grid.Row="1" Style="{StaticResource BottomElementVerticalStackLayout}">
+            <Button Command="{Binding SaveCommand}" 
+                    Style="{StaticResource FilledPrimaryButton}" 
+                    Text="Show Loader" />
+        </VerticalStackLayout>
+
+    </Grid>
+    
+</base:ContentPageBase>

@@ -5,7 +5,7 @@
     xmlns:ccl="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels;assembly=Blog_MAUI_Components.MAUI"
     xmlns:page="clr-namespace:Blog_MAUI_Components.Presentation.Pages.Entry"
     xmlns:base="clr-namespace:Blog_MAUI_Components.Presentation.Common"
-    Title="Entry"
+    Title="Entry Demo"
     x:DataType="page:EntryPageViewModel"
     x:Class="Blog_MAUI_Components.Presentation.Pages.Entry.EntryPage">
     
