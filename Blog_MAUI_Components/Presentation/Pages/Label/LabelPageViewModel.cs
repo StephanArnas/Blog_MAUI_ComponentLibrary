@@ -1,52 +1,47 @@
 using Blog_MAUI_Components.Application.Cities;
-using Blog_MAUI_Components.Application.Common.Interfaces.Infrastructure;
+using Blog_MAUI_Components.Application.Common.Interfaces.Services;
+using Blog_MAUI_Components.Application.Countries;
 using Blog_MAUI_Components.Presentation.Common;
-using Blog_MAUI_Components.Presentation.Pages.Entry;
-using Blog_MAUI_Components.Presentation.Pages.Search;
-using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
+using Sharpnado.TaskLoaderView;
 
 namespace Blog_MAUI_Components.Presentation.Pages.Label;
 
 public partial class LabelPageViewModel : ViewModelBase
 {
     private readonly ILogger<LabelPageViewModel> _logger;
-    private readonly INavigationService _navigationService;
+    private readonly ICityService _cityService;
+    private readonly ICountryService _countryService;
     
     [ObservableProperty]
-    private CityVm? _cityOfBirth;
+    private CountryVm? _country;
     
     [ObservableProperty]
-    private CityVm? _cityOfResidence;
+    private CityVm? _city;
     
-    [ObservableProperty]
-    private bool _isLoading;
+    public static string CountryDisplayProperty => nameof(CountryVm.Name);
+    public static string CityDisplayProperty => nameof(CityVm.Name);
+
+    public TaskLoaderNotifier<IReadOnlyCollection<CountryVm>> CountriesLoader { get; } = new();
+    public TaskLoaderNotifier<IReadOnlyCollection<CityVm>> CitiesLoader { get; } = new();
 
     public LabelPageViewModel(
         ILogger<LabelPageViewModel> logger,
-        INavigationService navigationService)
+        ICityService cityService,
+        ICountryService countryService)
     {
         _logger = logger;
-        _navigationService = navigationService;
-
+        _cityService = cityService;
+        _countryService = countryService;
+        
         _logger.LogInformation("Building LabelPageViewModel");
     }
     
     public override void ApplyQueryAttributes(IDictionary<string, object> query)
     {
         _logger.LogInformation("ApplyQueryAttributes( query: {Query} )", query);
-        
-        if (query.TryGetValue(nameof(CityOfBirth), out var cityOfBirth))
-        {
-            CityOfBirth = (CityVm)cityOfBirth;
-        }
-        
-        if (query.TryGetValue(nameof(CityOfResidence), out var cityOfResidence))
-        {
-            CityOfResidence = (CityVm)cityOfResidence;
-        }
         
         base.ApplyQueryAttributes(query);
     }
@@ -55,6 +50,11 @@ public partial class LabelPageViewModel : ViewModelBase
     {
         _logger.LogInformation("OnAppearing()");
 
+        if (CountriesLoader.IsNotStarted)
+        {
+            CountriesLoader.Load(_ => LoadCountriesAsync());
+        }
+        
         base.OnAppearing();
     }
 
@@ -64,34 +64,53 @@ public partial class LabelPageViewModel : ViewModelBase
         
         base.OnDisappearing();
     }
-
-    [RelayCommand]
-    private Task GoToCityOfBirthSearch()
+    
+    private async Task<IReadOnlyCollection<CountryVm>> LoadCountriesAsync(CancellationToken cancellationToken = default)
     {
-        _logger.LogInformation("GoToCityOfBirthSearch()");
+        _logger.LogInformation("LoadCountriesAsync()");
 
-        var parameters = new Dictionary<string, object> { { CitySearchPageViewModel.ExpectedResultNameParameter, nameof(CityOfBirth) } };
-        return _navigationService.NavigateToAsync(RouteConstants.CitySearchPage, parameters);
+        var domainResult = await _countryService.GetAllCountriesAsync(cancellationToken);
+        _logger.LogInformation("Items loaded: {Count}", domainResult.Count);
+
+        return domainResult;
+    }
+
+    private async Task<IReadOnlyCollection<CityVm>> LoadCitiesByCountry(CancellationToken cancellationToken = default)
+    {
+        _logger.LogInformation("LoadCitiesByCountry()");
+
+        if (Country is null)
+        {
+            return Array.Empty<CityVm>();
+        }
+        
+        var domainResult = await _cityService.GetCitiesAsync(Country.Id, cancellationToken);
+        _logger.LogInformation("Items loaded: {Count}", domainResult.Count);
+        
+        return domainResult;
     }
 
     [RelayCommand]
-    private Task GoToCityOfResidenceSearch()
+    private Task CountrySelected()
     {
-        _logger.LogInformation("GoToCityOfResidenceSearch()");
+        _logger.LogInformation("CountrySelected()");
 
-        var parameters = new Dictionary<string, object> { { CitySearchPageViewModel.ExpectedResultNameParameter, nameof(CityOfResidence) } };
-        return _navigationService.NavigateToAsync(RouteConstants.CitySearchPage, parameters);
+        City = null;
+        CitiesLoader.Reset();
+        CitiesLoader.Load(_ => LoadCitiesByCountry());
+        
+        return Task.CompletedTask;
     }
     
     [RelayCommand]
-    private async Task Save()
+    private Task Reset()
     {
-        _logger.LogInformation("Save()");
-
-        IsLoading = true;
+        _logger.LogInformation("Reset()");
         
-        await Task.Delay(2000);
+        Country = null;
+        City = null;
+        CitiesLoader.Reset();
         
-        IsLoading = false;
+        return Task.CompletedTask;
     }
 }

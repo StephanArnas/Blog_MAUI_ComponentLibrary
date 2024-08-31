@@ -5,8 +5,8 @@ namespace Blog_MAUI_Components.Presentation.Common;
 public  abstract class ViewModelBase : ObservableObject, IQueryAttributable
 {
     protected bool IsAppearingFromDetailPage;
-    
-    public ViewModelBase() { }
+
+    protected ViewModelBase() { }
 
     public virtual void ApplyQueryAttributes(IDictionary<string, object> query)
     {

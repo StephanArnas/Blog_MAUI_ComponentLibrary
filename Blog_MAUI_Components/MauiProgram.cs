@@ -3,12 +3,10 @@ using Blog_MAUI_Components.MAUI;
 using Blog_MAUI_Components.Presentation.Common;
 using Blog_MAUI_Components.Presentation.Pages.Entry;
 using Blog_MAUI_Components.Presentation.Pages.Label;
-using Blog_MAUI_Components.Presentation.Pages.Search;
 using Blog_MAUI_Components.Services;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using Microsoft.Maui.Handlers;
-using LabelPageViewModel = Blog_MAUI_Components.Presentation.Pages.Label.LabelPageViewModel;
 
 namespace Blog_MAUI_Components;
 
@@ -26,7 +24,7 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
-
+        
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
@@ -39,30 +37,53 @@ public static class MauiProgram
         // Register your pages.
         builder.Services.AddTransientWithShellRoute<EntryPage, EntryPageViewModel>(RouteConstants.EntryPage);
         builder.Services.AddTransientWithShellRoute<LabelPage, LabelPageViewModel>(RouteConstants.LabelPage);
-        builder.Services.AddTransientWithShellRoute<CitySearchPage, CitySearchPageViewModel>(RouteConstants.CitySearchPage);
 
         return builder.Build();
     }
     
     private static void ApplyStyleCustomization()
     {
-        EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, _) =>
+        EntryHandler.Mapper.AppendToMapping("NoUnderline", (handler, view) =>
         {
-#if __ANDROID__
-            // Remove the underline from the EditText
-            handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
+#if ANDROID
+        // Remove the underline from the EditText
+        handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Transparent);
 #endif
         });
         
-        EntryHandler.Mapper.AppendToMapping("SetUpEntry", (handler, view) =>
+        EntryHandler.Mapper.AppendToMapping("SetUpEntry", (handler, _) =>
         {
 #if ANDROID
 
 #elif IOS || MACCATALYST
-            // Remove outline from the UITextField
-            handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
+        // Remove outline from the UITextField
+        handler.PlatformView.BorderStyle = UIKit.UITextBorderStyle.None;
 #elif WINDOWS
-      
+
+#endif
+        });
+        
+        PickerHandler.Mapper.AppendToMapping("NoUnderline", (handler, _) =>
+        {
+#if ANDROID
+        // Remove the underline from the Spinner (Picker)
+        handler.PlatformView.Background = null;
+#endif
+        });
+
+        PickerHandler.Mapper.AppendToMapping("SetUpPicker", (handler, _) =>
+        {
+#if ANDROID
+        // Set the background to transparent
+        handler.PlatformView.Background = null;
+#elif IOS || MACCATALYST
+        // Remove border for the UITextField (Picker)
+        if (handler.PlatformView is UIKit.UITextField textField)
+        {
+            textField.BorderStyle = UIKit.UITextBorderStyle.None;
+        }
+#elif WINDOWS
+
 #endif
         });
     }

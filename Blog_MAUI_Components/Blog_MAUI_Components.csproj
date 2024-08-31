@@ -63,6 +63,7 @@
         <PackageReference Include="Microsoft.Maui.Controls" Version="8.0.80" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.80" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0"/>
+        <PackageReference Include="Sharpnado.Maui.TaskLoaderView" Version="2.5.1" />
     </ItemGroup>
 
     <ItemGroup>
@@ -76,6 +77,12 @@
         <SubType>Designer</SubType>
       </MauiXaml>
       <MauiXaml Update="Presentation\Pages\MainPage.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+      <MauiXaml Update="Presentation\Pages\Search\Cities\CitySearchPage.xaml">
+        <SubType>Designer</SubType>
+      </MauiXaml>
+      <MauiXaml Update="Presentation\Pages\Search\Countries\CountrySearchPage.xaml">
         <SubType>Designer</SubType>
       </MauiXaml>
     </ItemGroup>
@@ -95,6 +102,14 @@
       </Compile>
       <Compile Update="Presentation\Pages\MainPage.xaml.cs">
         <DependentUpon>MainPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Presentation\Pages\Search\Cities\CitySearchPage.xaml.cs">
+        <DependentUpon>CitySearchPage.xaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Presentation\Pages\Search\Countries\CountrySearchPage.xaml.cs">
+        <DependentUpon>CountrySearchPage.xaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

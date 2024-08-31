@@ -16,6 +16,24 @@
                 Margin="16, 32"
                 Spacing="25">
                 
+                <ccl:PickerLabel
+                    Label="Country"
+                    SelectedItem="{Binding Country}"
+                    ItemsSource="{Binding CountriesLoader.Result}" 
+                    ItemDisplayBinding="{x:Static page:LabelPageViewModel.CountryDisplayProperty}"
+                    TapCommand="{Binding CountrySelectedCommand}"
+                    ShowLoader="{Binding CountriesLoader.ShowLoader}"
+                    />
+                
+                <ccl:PickerLabel
+                    Label="City"
+                    SelectedItem="{Binding City}"
+                    ItemsSource="{Binding CitiesLoader.Result}"
+                    ItemDisplayBinding="{x:Static page:LabelPageViewModel.CityDisplayProperty}"
+                    ShowLoader="{Binding CitiesLoader.ShowLoader}"
+                    />
+                
+                <!--
                 <ccl:LabelLabel
                     Label="City of Birth" 
                     Text="{Binding CityOfBirth.Name}"
@@ -28,14 +46,15 @@
                     TapCommand="{Binding GoToCityOfResidenceSearchCommand}"
                     ShowLoader="{Binding IsLoading}"
                     IsRequired="True"/>
+                -->
                 
             </VerticalStackLayout>
         </ScrollView>
         
         <VerticalStackLayout Grid.Row="1" Style="{StaticResource BottomElementVerticalStackLayout}">
-            <Button Command="{Binding SaveCommand}" 
+            <Button Command="{Binding ResetCommand}" 
                     Style="{StaticResource FilledPrimaryButton}" 
-                    Text="Show Loader" />
+                    Text="Reset" />
         </VerticalStackLayout>
 
     </Grid>

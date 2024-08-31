@@ -7,12 +7,6 @@ namespace Blog_MAUI_Components.Infrastructure.Navigation;
 
 public class NavigationService : INavigationService
 {
-    public Task InitializeAsync()
-    {
-        // TODO: Not implemented yet, need login and main page.
-        return Task.CompletedTask;
-    }
-    
     public Task NavigateToAsync(string route, IDictionary<string, object>? routeParameters = null)
     {
         return routeParameters != null

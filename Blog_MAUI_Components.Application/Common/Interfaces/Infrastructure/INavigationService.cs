@@ -3,11 +3,6 @@ namespace Blog_MAUI_Components.Application.Common.Interfaces.Infrastructure;
 public interface INavigationService
 {
     /// <summary>
-    /// Resets navigation and navigates to launch page.
-    /// </summary>
-    Task InitializeAsync();
-
-    /// <summary>
     /// Performs hierarchical navigation to a specific page using a registered navigation route.
     /// Can optionally pass named route parameters to be used for processing in the destination page.
     /// </summary>
