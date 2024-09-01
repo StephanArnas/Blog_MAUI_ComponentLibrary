@@ -7,11 +7,11 @@ using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
 using Sharpnado.TaskLoaderView;
 
-namespace Blog_MAUI_Components.Presentation.Pages.Label;
+namespace Blog_MAUI_Components.Presentation.Pages.Pickers;
 
-public partial class LabelPageViewModel : ViewModelBase
+public partial class PickerPageViewModel : ViewModelBase
 {
-    private readonly ILogger<LabelPageViewModel> _logger;
+    private readonly ILogger<PickerPageViewModel> _logger;
     private readonly ICityService _cityService;
     private readonly ICountryService _countryService;
     
@@ -27,8 +27,8 @@ public partial class LabelPageViewModel : ViewModelBase
     public TaskLoaderNotifier<IReadOnlyCollection<CountryVm>> CountriesLoader { get; } = new();
     public TaskLoaderNotifier<IReadOnlyCollection<CityVm>> CitiesLoader { get; } = new();
 
-    public LabelPageViewModel(
-        ILogger<LabelPageViewModel> logger,
+    public PickerPageViewModel(
+        ILogger<PickerPageViewModel> logger,
         ICityService cityService,
         ICountryService countryService)
     {

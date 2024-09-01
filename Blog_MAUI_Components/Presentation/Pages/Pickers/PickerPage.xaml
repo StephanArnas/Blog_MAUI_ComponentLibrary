@@ -5,10 +5,10 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ccl="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels;assembly=Blog_MAUI_Components.MAUI"
     xmlns:base="clr-namespace:Blog_MAUI_Components.Presentation.Common"
-    xmlns:page="clr-namespace:Blog_MAUI_Components.Presentation.Pages.Label"
+    xmlns:pickers="clr-namespace:Blog_MAUI_Components.Presentation.Pages.Pickers"
     Title="Label Demo"
-    x:DataType="page:LabelPageViewModel"
-    x:Class="Blog_MAUI_Components.Presentation.Pages.Label.LabelPage">
+    x:DataType="pickers:PickerPageViewModel"
+    x:Class="Blog_MAUI_Components.Presentation.Pages.Pickers.PickerPage">
 
     <Grid RowDefinitions="*,Auto" >
         <ScrollView>
@@ -20,7 +20,7 @@
                     Label="Country"
                     SelectedItem="{Binding Country}"
                     ItemsSource="{Binding CountriesLoader.Result}" 
-                    ItemDisplayBinding="{x:Static page:LabelPageViewModel.CountryDisplayProperty}"
+                    ItemDisplayBinding="{x:Static pickers:PickerPageViewModel.CountryDisplayProperty}"
                     TapCommand="{Binding CountrySelectedCommand}"
                     ShowLoader="{Binding CountriesLoader.ShowLoader}" />
                 
@@ -28,7 +28,7 @@
                     Label="City"
                     SelectedItem="{Binding City}"
                     ItemsSource="{Binding CitiesLoader.Result}"
-                    ItemDisplayBinding="{x:Static page:LabelPageViewModel.CityDisplayProperty}"
+                    ItemDisplayBinding="{x:Static pickers:PickerPageViewModel.CityDisplayProperty}"
                     ShowLoader="{Binding CitiesLoader.ShowLoader}" />
                 
             </VerticalStackLayout>
