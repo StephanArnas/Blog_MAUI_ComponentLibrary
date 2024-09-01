@@ -1,5 +1,5 @@
+using Blog_MAUI_Components.Application.Common.Interfaces.Infrastructure;
 using Blog_MAUI_Components.Presentation.Common;
-using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using FluentValidation.Results;
@@ -10,7 +10,7 @@ namespace Blog_MAUI_Components.Presentation.Pages.Entry;
 public partial class EntryPageViewModel : ViewModelBase
 {
     private readonly ILogger<EntryPageViewModel> _logger;
-    
+    private readonly IToastService _toastService;    
     [ObservableProperty]
     private string? _fullName;
     
@@ -21,9 +21,11 @@ public partial class EntryPageViewModel : ViewModelBase
     private ValidationResult? _validationResult;
     
     public EntryPageViewModel(
-        ILogger<EntryPageViewModel> logger)
+        ILogger<EntryPageViewModel> logger,
+        IToastService toastService)    
     {
         _logger = logger;
+        _toastService = toastService;
 
         _logger.LogInformation("Building EntryPageViewModel");
     }
@@ -59,6 +61,6 @@ public partial class EntryPageViewModel : ViewModelBase
             return;
         }
         
-        await Toast.Make("Saved !!").Show();
+        await _toastService.ShowAsync("Saved !!");
     }
 }

@@ -22,31 +22,14 @@
                     ItemsSource="{Binding CountriesLoader.Result}" 
                     ItemDisplayBinding="{x:Static page:LabelPageViewModel.CountryDisplayProperty}"
                     TapCommand="{Binding CountrySelectedCommand}"
-                    ShowLoader="{Binding CountriesLoader.ShowLoader}"
-                    />
+                    ShowLoader="{Binding CountriesLoader.ShowLoader}" />
                 
                 <ccl:PickerLabel
                     Label="City"
                     SelectedItem="{Binding City}"
                     ItemsSource="{Binding CitiesLoader.Result}"
                     ItemDisplayBinding="{x:Static page:LabelPageViewModel.CityDisplayProperty}"
-                    ShowLoader="{Binding CitiesLoader.ShowLoader}"
-                    />
-                
-                <!--
-                <ccl:LabelLabel
-                    Label="City of Birth" 
-                    Text="{Binding CityOfBirth.Name}"
-                    TapCommand="{Binding GoToCityOfBirthSearchCommand}"
-                    IsRequired="True"/>
-                
-                <ccl:LabelLabel
-                    Label="City of Residence " 
-                    Text="{Binding CityOfResidence.Name}"
-                    TapCommand="{Binding GoToCityOfResidenceSearchCommand}"
-                    ShowLoader="{Binding IsLoading}"
-                    IsRequired="True"/>
-                -->
+                    ShowLoader="{Binding CitiesLoader.ShowLoader}" />
                 
             </VerticalStackLayout>
         </ScrollView>

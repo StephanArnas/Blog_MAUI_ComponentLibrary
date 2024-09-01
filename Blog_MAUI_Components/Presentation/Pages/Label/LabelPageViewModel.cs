@@ -81,6 +81,7 @@ public partial class LabelPageViewModel : ViewModelBase
 
         if (Country is null)
         {
+            // Add a toast to enhance the user experience.
             return Array.Empty<CityVm>();
         }
         
