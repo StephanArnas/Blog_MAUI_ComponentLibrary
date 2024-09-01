@@ -66,5 +66,5 @@
                        WidthRequest="24"
                        HeightRequest="24"
                        Margin="0,0, 8, 0"
-                       Color="{StaticResource Primary}"/>
+                       Color="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
 </Grid>

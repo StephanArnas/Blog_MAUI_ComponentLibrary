@@ -6,7 +6,7 @@
     xmlns:ccl="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels;assembly=Blog_MAUI_Components.MAUI"
     xmlns:base="clr-namespace:Blog_MAUI_Components.Presentation.Common"
     xmlns:pickers="clr-namespace:Blog_MAUI_Components.Presentation.Pages.Pickers"
-    Title="Label Demo"
+    Title="Picker Demo"
     x:DataType="pickers:PickerPageViewModel"
     x:Class="Blog_MAUI_Components.Presentation.Pages.Pickers.PickerPage">
 
