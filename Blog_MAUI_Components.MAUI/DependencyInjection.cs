@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui;
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace Blog_MAUI_Components.MAUI;

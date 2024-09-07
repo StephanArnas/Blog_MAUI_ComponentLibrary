@@ -6,9 +6,9 @@
     xmlns:ccl="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels;assembly=Blog_MAUI_Components.MAUI"
     xmlns:base="clr-namespace:Blog_MAUI_Components.Presentation.Common"
     xmlns:page="clr-namespace:Blog_MAUI_Components.Presentation.Pages.Pickers"
-    Title="Picker Demo"
+    Title="Picker with Popup Demo"
     x:DataType="page:PickerPageViewModel"
-    x:Class="Blog_MAUI_Components.Presentation.Pages.Pickers.PickerPage">
+    x:Class="Blog_MAUI_Components.Presentation.Pages.Pickers.PickerPopupPage">
 
     <Grid RowDefinitions="*,Auto" >
         <ScrollView>
@@ -16,7 +16,7 @@
                 Margin="16, 32"
                 Spacing="25">
                 
-                <ccl:PickerLabel
+                <ccl:PickerPopupLabel
                     Label="Country"
                     SelectedItem="{Binding Country}"
                     ItemsSource="{Binding CountriesLoader.Result}" 
@@ -24,13 +24,13 @@
                     TapCommand="{Binding CountrySelectedCommand}"
                     ShowLoader="{Binding CountriesLoader.ShowLoader}" />
                 
-                <ccl:PickerLabel
+                <ccl:PickerPopupLabel
                     Label="City"
                     SelectedItem="{Binding City}"
                     ItemsSource="{Binding CitiesLoader.Result}"
                     ItemDisplay="{x:Static page:PickerPageViewModel.CityDisplayProperty}"
                     ShowLoader="{Binding CitiesLoader.ShowLoader}" />
-                
+
             </VerticalStackLayout>
         </ScrollView>
         

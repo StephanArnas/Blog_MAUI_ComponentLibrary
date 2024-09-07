@@ -14,8 +14,9 @@ public partial class EntryLabel
         Element.BindingContext = this;
     }
     
-    public static readonly BindableProperty TextProperty = BindableProperty.Create("Text",
-        typeof(string), typeof(EntryLabel), propertyChanged: TextChanged, defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty TextProperty = 
+        BindableProperty.Create(nameof(Text), typeof(string), typeof(EntryLabel), 
+            propertyChanged: TextChanged, defaultBindingMode: BindingMode.TwoWay);
 
     public string Text
     {
@@ -23,8 +24,9 @@ public partial class EntryLabel
         set => SetValue(TextProperty, value);
     }
 
-    public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create("Placeholder",
-        typeof(string), typeof(EntryLabel), propertyChanged: PlaceholderChanged);
+    public static readonly BindableProperty PlaceholderProperty = 
+        BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(EntryLabel), 
+            propertyChanged: PlaceholderChanged);
 
     public string Placeholder
     {
@@ -32,8 +34,9 @@ public partial class EntryLabel
         set => SetValue(PlaceholderProperty, value);
     }
 
-    public static readonly BindableProperty KeyboardProperty = BindableProperty.Create("Keyboard",
-        typeof(Keyboard), typeof(EntryLabel), Keyboard.Plain, propertyChanged: KeyboardChanged);
+    public static readonly BindableProperty KeyboardProperty = 
+        BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(EntryLabel), 
+            defaultValue: Keyboard.Plain, propertyChanged: KeyboardChanged);
 
     public Keyboard Keyboard
     {
@@ -41,8 +44,9 @@ public partial class EntryLabel
         set => SetValue(KeyboardProperty, value);
     }
 
-    public static readonly BindableProperty ReturnTypeProperty = BindableProperty.Create("ReturnType",
-        typeof(ReturnType), typeof(EntryLabel), ReturnType.Done, propertyChanged: ReturnTypeChanged);
+    public static readonly BindableProperty ReturnTypeProperty = 
+        BindableProperty.Create(nameof(ReturnType), typeof(ReturnType), typeof(EntryLabel), 
+            defaultValue: ReturnType.Done, propertyChanged: ReturnTypeChanged);
 
     public ReturnType ReturnType
     {
@@ -50,8 +54,9 @@ public partial class EntryLabel
         set => SetValue(ReturnTypeProperty, value);
     }
 
-    public static readonly BindableProperty ReturnCommandProperty = BindableProperty.Create("ReturnCommand",
-        typeof(ICommand), typeof(EntryLabel), defaultValue: null, propertyChanged: ReturnCommandChanged);
+    public static readonly BindableProperty ReturnCommandProperty = 
+        BindableProperty.Create(nameof(ReturnCommand), typeof(ICommand), typeof(EntryLabel), 
+            defaultValue: null, propertyChanged: ReturnCommandChanged);
 
     public ICommand ReturnCommand
     {
@@ -59,8 +64,9 @@ public partial class EntryLabel
         set => SetValue(ReturnCommandProperty, value);
     }
 
-    public static readonly BindableProperty TextTransformProperty = BindableProperty.Create("TextTransform",
-        typeof(TextTransform), typeof(EntryLabel), defaultValue: TextTransform.Default, propertyChanged: TextTransformChanged);
+    public static readonly BindableProperty TextTransformProperty = 
+        BindableProperty.Create(nameof(TextTransform), typeof(TextTransform), typeof(EntryLabel), 
+            defaultValue: TextTransform.Default, propertyChanged: TextTransformChanged);
     
     public TextTransform TextTransform
     {

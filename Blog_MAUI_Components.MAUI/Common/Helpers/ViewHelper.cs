@@ -1,4 +1,4 @@
-namespace Blog_MAUI_Components.MAUI.Common;
+namespace Blog_MAUI_Components.MAUI.Common.Helpers;
 
 public static class ViewHelper
 {

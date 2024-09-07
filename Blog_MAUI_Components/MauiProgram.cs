@@ -1,6 +1,7 @@
 ﻿using Blog_MAUI_Components.Infrastructure;
 using Blog_MAUI_Components.MAUI;
 using Blog_MAUI_Components.Presentation.Common;
+using Blog_MAUI_Components.Presentation.Pages;
 using Blog_MAUI_Components.Presentation.Pages.Entry;
 using Blog_MAUI_Components.Presentation.Pages.Pickers;
 using Blog_MAUI_Components.Services;
@@ -35,8 +36,10 @@ public static class MauiProgram
         ApplyStyleCustomization();
         
         // Register your pages.
+        builder.Services.AddTransient<MainPage, MainPageViewModel>();
         builder.Services.AddTransientWithShellRoute<EntryPage, EntryPageViewModel>(RouteConstants.EntryPage);
-        builder.Services.AddTransientWithShellRoute<PickerPage, PickerPageViewModel>(RouteConstants.LabelPage);
+        builder.Services.AddTransientWithShellRoute<PickerPage, PickerPageViewModel>(RouteConstants.PickerPage);
+        builder.Services.AddTransientWithShellRoute<PickerPopupPage, PickerPageViewModel>(RouteConstants.PickerPopupPage);
 
         return builder.Build();
     }

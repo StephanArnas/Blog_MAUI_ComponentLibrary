@@ -29,7 +29,8 @@ public partial class PickerLabel
     }
     
     public static readonly BindableProperty ItemsSourceProperty =
-        BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(PickerLabel), propertyChanged: OnItemsSourceChanged);
+        BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(PickerLabel), 
+            propertyChanged: OnItemsSourceChanged);
 
     public IList ItemsSource
     {
@@ -38,7 +39,8 @@ public partial class PickerLabel
     }
 
     public static readonly BindableProperty SelectedItemProperty =
-        BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(PickerLabel), null, BindingMode.TwoWay, propertyChanged: OnSelectedItemChanged);
+        BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(PickerLabel), 
+            defaultValue: null, BindingMode.TwoWay, propertyChanged: OnSelectedItemChanged);
 
     public object SelectedItem
     {
@@ -46,13 +48,14 @@ public partial class PickerLabel
         set => SetValue(SelectedItemProperty, value);
     }
     
-    public static readonly BindableProperty ItemDisplayBindingProperty = 
-        BindableProperty.Create(nameof(ItemDisplayBinding), typeof(string), typeof(PickerLabel), propertyChanged: OnItemDisplayBindingChanged, defaultBindingMode: BindingMode.OneWay);
+    public static readonly BindableProperty ItemDisplayProperty = 
+        BindableProperty.Create(nameof(ItemDisplay), typeof(string), typeof(PickerLabel), 
+            propertyChanged: OnItemDisplayBindingChanged, defaultBindingMode: BindingMode.OneWay);
 
-    public string ItemDisplayBinding
+    public string ItemDisplay
     {
-        get => (string)GetValue(ItemDisplayBindingProperty);
-        set => SetValue(ItemDisplayBindingProperty, value);
+        get => (string)GetValue(ItemDisplayProperty);
+        set => SetValue(ItemDisplayProperty, value);
     }
     
     public static readonly BindableProperty TapCommandProperty = 
@@ -81,6 +84,6 @@ public partial class PickerLabel
 
     private void OnItemDisplayBindingChanged()
     {
-        Element.ItemDisplayBinding = new Binding(ItemDisplayBinding);
+        Element.ItemDisplayBinding = new Binding(ItemDisplay);
     }
 }

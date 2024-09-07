@@ -16,13 +16,15 @@
            <Setter Property="VerticalOptions" Value="Start" />
        </Style>
        <Style x:Key="BaseLabelLabel" BasedOn="{StaticResource BaseLabel}" TargetType="Label">
-           <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Gray900}, Dark={StaticResource Gray100}}" />
+           <Setter Property="TextColor" Value="{AppThemeBinding 
+            Light={StaticResource Gray900}, 
+            Dark={StaticResource Gray100}}" />
            <Setter Property="FontSize" Value="14"/>
            <Setter Property="FontAttributes" Value="Bold"/>
            <Setter Property="Margin" Value="0, 4, 0, 4" />
        </Style>
        <Style x:Key="BaseRequiredLabelLabel" BasedOn="{StaticResource BaseLabelLabel}" TargetType="Label">
-           <Setter Property="TextColor" Value="{StaticResource Danger }" />
+           <Setter Property="TextColor" Value="{DynamicResource Danger }" />
            <Setter Property="Margin" Value="4, 0, -4, 0" />
        </Style>
        <Style x:Key="BaseBorder" TargetType="Border">
@@ -50,12 +52,12 @@
 
     <Label x:Name="InfoLabel" Grid.Row="1"
         IsVisible="False"
-        TextColor="{StaticResource Gray500}"
+        TextColor="{DynamicResource Gray500}"
         Style="{StaticResource BaseLabelLabel}" />
 
     <Label x:Name="ErrorLabel" Grid.Row="2"
         IsVisible="False"
-        TextColor="{StaticResource Danger}"
+        TextColor="{DynamicResource Danger}"
         Style="{StaticResource BaseLabelLabel}"/>
     
     <ActivityIndicator x:Name="LoaderActivityIndicator"
@@ -66,5 +68,7 @@
                        WidthRequest="24"
                        HeightRequest="24"
                        Margin="0,0, 8, 0"
-                       Color="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}"/>
+                       Color="{AppThemeBinding 
+                            Light={StaticResource Primary}, 
+                            Dark={StaticResource PrimaryDark}}"/>
 </Grid>

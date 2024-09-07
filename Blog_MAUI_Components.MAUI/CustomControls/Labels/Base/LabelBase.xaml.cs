@@ -1,4 +1,4 @@
-using Blog_MAUI_Components.MAUI.Common;
+using Blog_MAUI_Components.MAUI.Common.Helpers;
 using SkiaSharp;
 using SkiaSharp.Views.Maui;
 
@@ -11,8 +11,9 @@ public partial class LabelBase
         InitializeComponent();
     }
 
-    public static readonly BindableProperty ViewProperty = BindableProperty.Create("View",
-        typeof(View), typeof(LabelBase), defaultValue: null, BindingMode.OneWay, ViewHelper.ValidateCustomView, ElementChanged);
+    public static readonly BindableProperty ViewProperty = 
+        BindableProperty.Create(nameof(View), typeof(View), typeof(LabelBase), 
+            defaultValue: null, BindingMode.OneWay, ViewHelper.ValidateCustomView, ElementChanged);
 
     public View View
     {
@@ -20,8 +21,9 @@ public partial class LabelBase
         set => SetValue(ViewProperty, value);
     }
     
-    public static readonly BindableProperty IsRequiredProperty = BindableProperty.Create("IsRequired",
-        typeof(bool), typeof(LabelBase), defaultValue: false, propertyChanged: IsRequiredChanged);
+    public static readonly BindableProperty IsRequiredProperty = 
+        BindableProperty.Create(nameof(IsRequired), typeof(bool), typeof(LabelBase), 
+            defaultValue: false, propertyChanged: IsRequiredChanged);
 
     public bool IsRequired
     {
@@ -29,8 +31,9 @@ public partial class LabelBase
         set => SetValue(IsRequiredProperty, value);
     }
     
-    public static readonly BindableProperty LabelProperty = BindableProperty.Create("Label",
-        typeof(string), typeof(LabelBase), propertyChanged: LabelChanged);
+    public static readonly BindableProperty LabelProperty = 
+        BindableProperty.Create(nameof(Label), typeof(string), typeof(LabelBase), 
+            propertyChanged: LabelChanged);
 
     public string Label
     {
@@ -38,8 +41,9 @@ public partial class LabelBase
         set => SetValue(LabelProperty, value);
     }
     
-    public static readonly BindableProperty InfoProperty = BindableProperty.Create("Info",
-        typeof(string), typeof(LabelBase), propertyChanged: InfoChanged);
+    public static readonly BindableProperty InfoProperty = 
+        BindableProperty.Create(nameof(Info), typeof(string), typeof(LabelBase), 
+            propertyChanged: InfoChanged);
 
     public string Info
     {
@@ -47,8 +51,9 @@ public partial class LabelBase
         set => SetValue(InfoProperty, value);
     }
 
-    public static readonly BindableProperty ErrorProperty = BindableProperty.Create("Error",
-        typeof(string), typeof(LabelBase), propertyChanged: ErrorChanged);
+    public static readonly BindableProperty ErrorProperty = 
+        BindableProperty.Create(nameof(Error), typeof(string), typeof(LabelBase), 
+            propertyChanged: ErrorChanged);
 
     public string Error
     {
@@ -56,8 +61,9 @@ public partial class LabelBase
         set => SetValue(ErrorProperty, value);
     }
 
-    public static readonly BindableProperty ShowLoaderProperty = BindableProperty.Create("ShowLoader",
-        typeof(bool), typeof(LabelBase), defaultValue: false, propertyChanged: ShowLoaderChanged);
+    public static readonly BindableProperty ShowLoaderProperty = 
+        BindableProperty.Create(nameof(ShowLoader), typeof(bool), typeof(LabelBase), 
+            defaultValue: false, propertyChanged: ShowLoaderChanged);
 
     public bool ShowLoader
     {
