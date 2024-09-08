@@ -67,23 +67,6 @@
             ItemsSource="{Binding ItemsSource}"
             SelectionMode="Single"
             x:Name="PickerCollectionView">
-            <CollectionView.Resources>
-                <Style TargetType="ContentView">
-                    <Setter Property="VisualStateManager.VisualStateGroups">
-                        <VisualStateGroupList>
-                            <VisualStateGroup x:Name="CommonStates">
-                                <VisualState x:Name="Selected">
-                                    <VisualState.Setters>
-                                        <Setter Property="BackgroundColor" Value="{AppThemeBinding 
-                                        Light={StaticResource PrimaryDark}, 
-                                        Dark={StaticResource Primary}}" />
-                                    </VisualState.Setters>
-                                </VisualState>
-                            </VisualStateGroup>
-                        </VisualStateGroupList>
-                    </Setter>
-                </Style>
-            </CollectionView.Resources>
         </CollectionView>
         
     </Grid>

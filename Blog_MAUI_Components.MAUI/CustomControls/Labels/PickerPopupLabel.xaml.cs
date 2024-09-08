@@ -9,7 +9,6 @@ namespace Blog_MAUI_Components.MAUI.CustomControls.Labels;
 public partial class PickerPopupLabel
 {
     private CollectionPopup? _collectionPopup;
-    private object? _previousSelectedItem;
 
     public PickerPopupLabel()
     {
@@ -20,27 +19,16 @@ public partial class PickerPopupLabel
         {
             _collectionPopup = new CollectionPopup
             {
-                Title = Label,
                 BindingContext = this,
+                Title = !string.IsNullOrEmpty(Title) ? Title : Label,
+                ItemsSource = ItemsSource,
+                SelectedItem = SelectedItem,
+                ItemDisplay = ItemDisplay,
             };
 
-            if (!string.IsNullOrEmpty(Title))
-            {
-                _collectionPopup.Title = Title;
-                _collectionPopup.SetBinding(CollectionPopup.TitleProperty, "Title");
-            }
-            else
-            {
-                _collectionPopup.Title = Label;
-                _collectionPopup.SetBinding(CollectionPopup.TitleProperty, "Label");
-            }
-
-            _collectionPopup.SetBinding(CollectionPopup.ItemsSourceProperty, "ItemsSource");
             _collectionPopup.SetBinding(CollectionPopup.SelectedItemProperty, "SelectedItem");
-            _collectionPopup.ItemDisplay = ItemDisplay;
-
-            InitUpdateViews();
-
+            _collectionPopup.SetBinding(CollectionPopup.ItemsSourceProperty, "ItemsSource");
+            
             Shell.Current.ShowPopup(_collectionPopup);
         };
         GestureRecognizers.Add(tapped);
@@ -48,7 +36,7 @@ public partial class PickerPopupLabel
     
     public static readonly BindableProperty ItemsSourceProperty = 
         BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(PickerPopupLabel), 
-            propertyChanged: ItemsSourceChanged, defaultBindingMode: BindingMode.OneWay);
+            defaultBindingMode: BindingMode.OneWay);
 
     public IList? ItemsSource
     {
@@ -78,7 +66,7 @@ public partial class PickerPopupLabel
 
     public static readonly BindableProperty ItemDisplayProperty = 
         BindableProperty.Create(nameof(ItemDisplay), typeof(string), typeof(PickerPopupLabel), 
-            propertyChanged: ItemDisplayChanged, defaultBindingMode: BindingMode.OneWay);
+            defaultBindingMode: BindingMode.OneWay);
 
     public string ItemDisplay
     {
@@ -105,61 +93,17 @@ public partial class PickerPopupLabel
         set => SetValue(TitleProperty, value);
     }
 
-    private static void ItemsSourceChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerPopupLabel)bindable).UpdateItemsSourceView();
     private static void SelectedItemChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerPopupLabel)bindable).UpdateSelectedItemView();
-    private static void ItemDisplayChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerPopupLabel)bindable).UpdateItemDisplayBindingView();
     private static void DefaultValueChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerPopupLabel)bindable).UpdateDefaultValueView();
-
-    private void InitUpdateViews()
-    {
-        UpdateItemsSourceView();
-        UpdateSelectedItemView();
-    }
-
-    private void UpdateItemsSourceView()
-    {
-        if (_collectionPopup != null)
-        {
-            _collectionPopup.ItemsSource = ItemsSource;
-        }
-    }
 
     private void UpdateSelectedItemView()
     {
-        if (_previousSelectedItem == null)
-        {
-            if (_previousSelectedItem != SelectedItem)
-            {
-                TapCommand?.Execute(SelectedItem);
-            }
-            _previousSelectedItem = SelectedItem;
-        }
-        else if (_previousSelectedItem != SelectedItem)
-        {
-            _previousSelectedItem = SelectedItem;
-            TapCommand?.Execute(SelectedItem);
-        }
-
-        if (_collectionPopup != null)
-        {
-            _collectionPopup.SelectedItem = SelectedItem;
-        }
-
-        Element.BindingContext = SelectedItem;
+        TapCommand?.Execute(SelectedItem);
         Element.Text = SelectedItem?.GetPropertyValue<string>(ItemDisplay) ?? string.Empty;
-
-        OnPropertyChanged(ItemDisplay);
     }
 
-    private void UpdateItemDisplayBindingView()
+    private void UpdateDefaultValueView()
     {
-        if (_collectionPopup != null)
-        {
-            _collectionPopup.ItemDisplay = ItemDisplay;
-        }
-
-        Element.SetBinding(Microsoft.Maui.Controls.Label.TextProperty, ItemDisplay);
+        Element.Text = DefaultValue;
     }
-
-    private void UpdateDefaultValueView() => Element.Text = DefaultValue;
 }
