@@ -68,12 +68,11 @@ public partial class CollectionPopup
                 HorizontalOptions = LayoutOptions.Fill,
                 VerticalOptions = LayoutOptions.Fill,
                 Padding = new Thickness(16, 14),
-                WidthRequest = GutterSystem.WidthScreen
+                WidthRequest = GutterSystem.WidthScreen,
+                BackgroundColor = Colors.Transparent
             };
 
-            // Put in comment the Triggers which was responsible for changing the background color for the selected item. 
-            // It's not working properly in MAUI, I created a bug issue: https://github.com/dotnet/maui/issues/24655
-            /*contentView.Triggers.Add(new DataTrigger(typeof(ContentView))
+            contentView.Triggers.Add(new DataTrigger(typeof(ContentView))
             {
                 Binding = new Binding("."),
                 Value = SelectedItem,
@@ -85,7 +84,7 @@ public partial class CollectionPopup
                         Value = ResourceHelper.GetThemeColor("PrimaryDark", "Primary")
                     }
                 }
-            });*/
+            });
             
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += (s, _) =>
