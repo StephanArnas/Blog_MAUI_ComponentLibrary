@@ -4,9 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels.Base"
     x:Class="Blog_MAUI_Components.MAUI.CustomControls.Labels.EntryLabel">
-    
     <base:LabelBase.View>
-        <Entry x:Name="Element"  />
+        <Entry x:Name="Element" />
     </base:LabelBase.View>
-    
 </base:LabelBase>

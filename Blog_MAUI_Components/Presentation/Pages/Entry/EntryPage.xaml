@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ccl="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels;assembly=Blog_MAUI_Components.MAUI"
-             xmlns:ccbl="clr-namespace:Blog_MAUI_Components.MAUI.CustomControlsBasic.Labels;assembly=Blog_MAUI_Components.MAUI"
-             Title="Entry"
-             x:Class="Blog_MAUI_Components.Presentation.Pages.Entry.EntryPage">
+<base:ContentPageBase
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ccl="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels;assembly=Blog_MAUI_Components.MAUI"
+    xmlns:page="clr-namespace:Blog_MAUI_Components.Presentation.Pages.Entry"
+    xmlns:base="clr-namespace:Blog_MAUI_Components.Presentation.Common"
+    Title="Entry Demo"
+    x:DataType="page:EntryPageViewModel"
+    x:Class="Blog_MAUI_Components.Presentation.Pages.Entry.EntryPage">
     
-    <ScrollView>
-        <VerticalStackLayout
-            Margin="16, 32"
-            Spacing="25">
-            
-            <Label
-                Text="Below is a basic entry custom control using Border for border styling" />
+    <Grid RowDefinitions="*,Auto" >
 
-            <ccbl:EntryLabelBasic
-                Label="First name or Last name"
-                IsRequired="False"
-                Placeholder="Enter your first name" />
-            
-            <Label
-                Text="Below is a basic entry custom control using SkiaSharp for border styling" />
+        <ScrollView>
+            <VerticalStackLayout
+                Margin="16, 32"
+                Spacing="25">
+                
+                <ccl:EntryLabel
+                    Label="First name or Last name"
+                    Text="{Binding FullName, Mode=TwoWay}"
+                    Error="{Binding ValidationResult, 
+                        Converter={StaticResource ShowErrorConverter}, 
+                        ConverterParameter={x:Static page:EntryPageViewModelValidator.FullNameProperty}}"
+                    IsRequired="True"
+                    Placeholder="John Doe" />
 
-            <ccl:EntryLabel
-                Label="First name or Last name"
-                IsRequired="False"
-                Placeholder="Enter your first name" />
-            
+                <ccl:EntryLabel
+                    Label="Email"
+                    Text="{Binding Email, Mode=TwoWay}"
+                    Error="{Binding ValidationResult, 
+                        Converter={StaticResource ShowErrorConverter}, 
+                        ConverterParameter={x:Static page:EntryPageViewModelValidator.EmailProperty}}"
+                    IsRequired="True"
+                    Info="We will never share your email with anyone"
+                    Placeholder="E.g: john.doe@gmail.com"
+                    ReturnCommand="{Binding SaveCommand}"/>
+                
+            </VerticalStackLayout>
+        </ScrollView>
+    
+        <VerticalStackLayout Grid.Row="1" Style="{StaticResource BottomElementVerticalStackLayout}">
+            <Button Command="{Binding SaveCommand}" 
+                    Style="{StaticResource FilledPrimaryButton}" 
+                    Text="Save" />
         </VerticalStackLayout>
-    </ScrollView>
-</ContentPage>
+
+    </Grid>
+</base:ContentPageBase>
