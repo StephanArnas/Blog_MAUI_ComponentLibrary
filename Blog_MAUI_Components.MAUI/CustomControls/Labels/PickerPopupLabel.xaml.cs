@@ -9,29 +9,41 @@ namespace Blog_MAUI_Components.MAUI.CustomControls.Labels;
 public partial class PickerPopupLabel
 {
     private CollectionPopup? _collectionPopup;
+    private readonly TapGestureRecognizer _tapGestureRecognizer;
 
     public PickerPopupLabel()
     {
         InitializeComponent();
         
-        var tapped = new TapGestureRecognizer();
-        tapped.Tapped += (_, _) =>
-        {
-            _collectionPopup = new CollectionPopup
-            {
-                BindingContext = this,
-                Title = !string.IsNullOrEmpty(Title) ? Title : Label,
-                ItemsSource = ItemsSource,
-                SelectedItem = SelectedItem,
-                ItemDisplay = ItemDisplay,
-            };
+        _tapGestureRecognizer = new TapGestureRecognizer();
+        _tapGestureRecognizer.Tapped += OnTapped;
 
-            _collectionPopup.SetBinding(CollectionPopup.SelectedItemProperty, "SelectedItem");
-            _collectionPopup.SetBinding(CollectionPopup.ItemsSourceProperty, "ItemsSource");
-            
-            Shell.Current.ShowPopup(_collectionPopup);
+        GestureRecognizers.Add(_tapGestureRecognizer);
+    }
+    
+    private void OnTapped(object? sender, EventArgs e)
+    {
+        _collectionPopup = new CollectionPopup
+        {
+            BindingContext = this,
+            Title = !string.IsNullOrEmpty(Title) ? Title : Label,
+            ItemsSource = ItemsSource,
+            SelectedItem = SelectedItem,
+            ItemDisplay = ItemDisplay,
         };
-        GestureRecognizers.Add(tapped);
+
+        _collectionPopup.SetBinding(CollectionPopup.SelectedItemProperty, "SelectedItem");
+        _collectionPopup.SetBinding(CollectionPopup.ItemsSourceProperty, "ItemsSource");
+
+        Shell.Current.ShowPopup(_collectionPopup);
+    }
+    
+    protected override void OnBindingContextChanged()
+    {
+        base.OnBindingContextChanged();
+
+        ActionIconSource ??= "chevron_bottom.png";
+        ActionIconCommand ??= new Command(() => OnTapped(null, EventArgs.Empty));
     }
     
     public static readonly BindableProperty ItemsSourceProperty = 

@@ -1,3 +1,4 @@
+using System.Windows.Input;
 using Blog_MAUI_Components.MAUI.Common.Helpers;
 using SkiaSharp;
 using SkiaSharp.Views.Maui;
@@ -70,6 +71,26 @@ public partial class LabelBase
         get => (bool)GetValue(ShowLoaderProperty);
         set => SetValue(ShowLoaderProperty, value);
     }
+    
+    public static readonly BindableProperty ActionIconSourceProperty = 
+        BindableProperty.Create(nameof(ActionIconSource), typeof(ImageSource), typeof(LabelBase),
+            defaultValue: null, propertyChanged: ActionIconSourceChanged);
+
+    public ImageSource? ActionIconSource
+    {
+        get => (ImageSource?)GetValue(ActionIconSourceProperty);
+        set => SetValue(ActionIconSourceProperty, value);
+    }
+
+    public static readonly BindableProperty ActionIconCommandProperty = 
+        BindableProperty.Create(nameof(ActionIconCommand), typeof(ICommand), typeof(LabelBase),
+            defaultValue: null, propertyChanged: ActionIconCommandChanged);
+
+    public ICommand? ActionIconCommand
+    {
+        get => (ICommand?)GetValue(ActionIconCommandProperty);
+        set => SetValue(ActionIconCommandProperty, value);
+    }
 
     private static void ElementChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateElementView();
     private static void IsRequiredChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateIsRequiredView();
@@ -77,7 +98,9 @@ public partial class LabelBase
     private static void InfoChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateInfoView();
     private static void ErrorChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateErrorView();
     private static void ShowLoaderChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateShowLoaderView();
-
+    private static void ActionIconSourceChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateActionIconSourceView();
+    private static void ActionIconCommandChanged(BindableObject bindable, object oldValue, object newValue) => ((LabelBase)bindable).UpdateActionIconCommandView();
+    
     private void UpdateElementView()
     {
         BorderLabel.Content = View;
@@ -111,6 +134,22 @@ public partial class LabelBase
     private void UpdateShowLoaderView()
     {
         LoaderActivityIndicator.IsVisible = ShowLoader;
+        
+        if (ActionIconSource is not null)
+        {
+            ActionIconButton.IsVisible = !ShowLoader;
+        }
+    }
+
+    private void UpdateActionIconSourceView()
+    {
+        ActionIconButton.IsVisible = ActionIconSource is not null;
+        ActionIconButton.Source = ActionIconSource;
+    }
+
+    private void UpdateActionIconCommandView()
+    {
+        ActionIconButton.Command = ActionIconCommand;
     }
     
     protected override void OnBindingContextChanged()

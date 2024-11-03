@@ -37,15 +37,15 @@
     
    <HorizontalStackLayout VerticalOptions="Start"  Margin="12, -13, 0, 0">
         <Label x:Name="RequiredLabel" 
-               Text="*"
-               Style="{StaticResource BaseRequiredLabelLabel}" />
+           Text="*"
+           Style="{StaticResource BaseRequiredLabelLabel}" />
 
         <Label x:Name="LabelLabel" 
-               Style="{StaticResource BaseLabelLabel}" />
+            Style="{StaticResource BaseLabelLabel}" />
    </HorizontalStackLayout>
     
     <skia:SKCanvasView x:Name="BorderCanvasView"
-                    PaintSurface="OnCanvasViewPaintSurface" />
+        PaintSurface="OnCanvasViewPaintSurface" />
 
     <Border x:Name="BorderLabel" 
          Style="{StaticResource BaseBorder}" />
@@ -71,4 +71,14 @@
                        Color="{AppThemeBinding 
                             Light={StaticResource Primary}, 
                             Dark={StaticResource PrimaryDark}}"/>
+    
+    <ImageButton x:Name="ActionIconButton"
+                 IsVisible="False"
+                 HorizontalOptions="End"
+                 VerticalOptions="Center"
+                 BackgroundColor="Transparent"
+                 WidthRequest="24"
+                 HeightRequest="24"
+                 Margin="0, 0, 8, 0" />
+
 </Grid>

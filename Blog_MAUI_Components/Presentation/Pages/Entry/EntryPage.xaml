@@ -23,7 +23,9 @@
                         Converter={StaticResource ShowErrorConverter}, 
                         ConverterParameter={x:Static page:EntryPageViewModelValidator.FullNameProperty}}"
                     IsRequired="True"
-                    Placeholder="John Doe" />
+                    Placeholder="John Doe"
+                    ActionIconSource="info.png" 
+                    ActionIconCommand="{Binding FullnameInfoCommand}"/>
 
                 <ccl:EntryLabel
                     Label="Email"
