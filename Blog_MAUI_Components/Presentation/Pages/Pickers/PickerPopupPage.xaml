@@ -22,7 +22,8 @@
                     ItemsSource="{Binding CountriesLoader.Result}" 
                     ItemDisplay="{x:Static page:PickerPageViewModel.CountryDisplayProperty}"
                     TapCommand="{Binding CountrySelectedCommand}"
-                    ShowLoader="{Binding CountriesLoader.ShowLoader}" />
+                    ShowLoader="{Binding CountriesLoader.ShowLoader}"
+                    ActionIconSource="chevron_bottom.svg"/>
                 
                 <ccl:PickerPopupLabel
                     Label="City"

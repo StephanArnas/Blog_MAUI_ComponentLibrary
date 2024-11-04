@@ -4,7 +4,6 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:base="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels.Base"
-    xmlns:page="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels"
     x:Class="Blog_MAUI_Components.MAUI.CustomControls.Labels.PickerLabel">
     
     <base:LabelBase.Resources>

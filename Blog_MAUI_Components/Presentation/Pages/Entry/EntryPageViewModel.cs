@@ -11,6 +11,8 @@ public partial class EntryPageViewModel : ViewModelBase
 {
     private readonly ILogger<EntryPageViewModel> _logger;
     private readonly IToastService _toastService;    
+    private readonly IDisplayService _displayService;    
+    
     [ObservableProperty]
     private string? _fullName;
     
@@ -22,10 +24,12 @@ public partial class EntryPageViewModel : ViewModelBase
     
     public EntryPageViewModel(
         ILogger<EntryPageViewModel> logger,
-        IToastService toastService)    
+        IToastService toastService,
+        IDisplayService displayService)    
     {
         _logger = logger;
         _toastService = toastService;
+        _displayService = displayService;
 
         _logger.LogInformation("Building EntryPageViewModel");
     }
@@ -62,5 +66,13 @@ public partial class EntryPageViewModel : ViewModelBase
         }
         
         await _toastService.ShowAsync("Saved !!");
+    }
+    
+    [RelayCommand]
+    private async Task FullnameInfo()
+    {
+        _logger.LogInformation("FullnameInfo()");
+
+        await _displayService.ShowPopupAsync("Full name", "Your first name and last name are used for communication purpose.");
     }
 }

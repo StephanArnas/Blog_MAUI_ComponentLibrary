@@ -16,7 +16,7 @@ public partial class PickerLabel
         Element.BindingContext = this;
     }
     
-    private void OnPickerTapped(object sender, EventArgs e)
+    private void OnPickerTapped(object? sender, EventArgs e)
     {
         if (Element.ItemsSource == null || !Element.ItemsSource.Cast<object>().Any())
         {
