@@ -6,6 +6,6 @@ public class DisplayService : IDisplayService
 {
     public Task ShowPopupAsync(string title, string message, string accept = "OK")
     {
-        return Microsoft.Maui.Controls.Application.Current!.MainPage!.DisplayAlert(title, message, accept);
+        return Microsoft.Maui.Controls.Application.Current!.Windows[0].Page!.DisplayAlert(title, message, accept);
     }
 }

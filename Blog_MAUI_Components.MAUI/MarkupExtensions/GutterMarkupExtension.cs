@@ -105,6 +105,7 @@ public enum GutterType
     LargeSmall = Large | VerticalSmall,
 }
 
+[AcceptEmptyServiceProvider]
 [ContentProperty("All")]
 public class GutterExtension : IMarkupExtension
 {

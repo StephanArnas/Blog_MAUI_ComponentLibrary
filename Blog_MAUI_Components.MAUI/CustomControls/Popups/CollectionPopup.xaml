@@ -8,6 +8,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Popups"
     xmlns:markup="clr-namespace:Blog_MAUI_Components.MAUI.MarkupExtensions;assembly=Blog_MAUI_Components.MAUI">
     
     <toolkit:Popup.Resources>
@@ -37,7 +38,8 @@
     <Grid
         BindingContext="{x:Reference This}"
         RowDefinitions="Auto,Auto"
-        Style="{StaticResource BottomPopupRootGrid}">
+        Style="{StaticResource BottomPopupRootGrid}"
+        x:DataType="controls:CollectionPopup">
         
         <VerticalStackLayout>
             <VerticalStackLayout Padding="16">
