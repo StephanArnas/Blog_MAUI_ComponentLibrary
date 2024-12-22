@@ -120,4 +120,8 @@
       <ProjectReference Include="..\Blog_MAUI_Components.Services\Blog_MAUI_Components.Services.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Presentation\Pages\Buttons\" />
+    </ItemGroup>
+
 </Project>
