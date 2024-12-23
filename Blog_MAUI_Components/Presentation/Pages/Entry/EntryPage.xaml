@@ -9,7 +9,7 @@
     x:DataType="page:EntryPageViewModel"
     x:Class="Blog_MAUI_Components.Presentation.Pages.Entry.EntryPage">
     
-    <Grid RowDefinitions="*,Auto" >
+    <Grid RowDefinitions="*,Auto" > 
 
         <ScrollView>
             <VerticalStackLayout

@@ -1,21 +1,20 @@
-# Upgrade MAUI to .NET 9.0
+# (Library Part 6) Custom Button with Progress Bar
 
 This repository contains the MAUI project featured in this article.
 
-![Upgrade MAUI to .NET 9.0](https://www.stephanarnas.com/images/blog-06.jpg)
+![(Library Part 6) Custom Button with Progress Bar](https://www.stephanarnas.com/images/blog-07.jpg)
 
-Upgrading your .NET MAUI application to .NET 9.0 unlocks powerful new features and performance improvements, but it also comes with changes that can introduce technical debt if not addressed promptly.
+In this article, we enhanced the button component in our MAUI Design System by integrating a Progress Bar with a custom CButton control.
+This implementation introduces an IsLoading property for visual feedback and demonstrates the integration of the TaskLoaderCommand for state management.
 
-It is crucial to carefully review and resolve all build warnings, as these often highlight deprecated APIs, obsolete features, or potential issues with compatibility. Ignoring these warnings may lead to larger challenges in future updates as APIs are removed or behaviors change.
-
-By tackling warnings now, you not only ensure a smoother upgrade path for future versions of .NET but also maintain a clean and maintainable codebase. This proactive approach reduces technical debt, improves project stability, and allows your team to focus on building new features rather than firefighting issues.
+We also addressed button state handling and explored how to bind properties like ShowLoader for seamless UI updates, creating a responsive and interactive user experience.
 
 If you enjoyed this blog post, then follow me on <a href="https://www.linkedin.com/in/stephan-arnas" target="_blank">LinkedIn</a>, **subscribe the newsletter** so you don't miss out on any future posts. Don't forget to share this with your friends and colleagues who are interested in learning about this topic. Thank you 🥰
 
 Happy coding!
 
-![Demo](https://www.stephanarnas.com/images/posts/2024-11-18/04.jpg)
+![Demo](https://www.stephanarnas.com/images/posts/2025-01-06/03.gif)
 
 Full article here : 
-https://www.stephanarnas.com/posts/upgrade-maui-dotnet-9
+https://www.stephanarnas.com/posts/custom-button-with-progress-bar
 

@@ -21,6 +21,14 @@ public partial class MainPageViewModel : ViewModelBase
     }
     
     [RelayCommand]
+    private async Task GoToButtonPage()
+    {
+        _logger.LogInformation("GoToButtonPage()");
+        
+        await _navigationService.NavigateToAsync(RouteConstants.ButtonPage);
+    }
+    
+    [RelayCommand]
     private async Task GoToEntryPage()
     {
         _logger.LogInformation("GoToEntryPage()");
