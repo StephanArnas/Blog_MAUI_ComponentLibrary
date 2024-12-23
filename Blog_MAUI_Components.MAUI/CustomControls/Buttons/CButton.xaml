@@ -14,7 +14,7 @@
     <ccp:ProgressBar 
         x:Name="AnimatedProgressBar"
         IsVisible="False"
-        Margin="6, -6, 6, 0"
+        Margin="6, 0"
         HeightRequest="5"
         UseRange="True"
         RoundCaps="True"

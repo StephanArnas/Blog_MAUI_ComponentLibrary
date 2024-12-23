@@ -21,6 +21,9 @@
                     Command="{Binding DemoOneCommand}" />
                 
                 <ccb:CButton 
+                    Text="Normal button" />
+                
+                <ccb:CButton 
                     Text="Disabled button"
                     IsEnabled="False" />
                 

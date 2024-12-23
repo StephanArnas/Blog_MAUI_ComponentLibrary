@@ -20,25 +20,6 @@ public class ButtonPageViewModel : ViewModelBase
         _logger.LogInformation("Building ButtonPageViewModel");
     }
     
-    public override void ApplyQueryAttributes(IDictionary<string, object> query)
-    {
-        _logger.LogInformation("ApplyQueryAttributes( query: {Query} )", query);
-    }
-
-    public override void OnAppearing()
-    {
-        _logger.LogInformation("OnAppearing()");
-
-        base.OnAppearing();
-    }
-
-    public override void OnDisappearing()
-    {
-        _logger.LogInformation("OnDisappearing()");
-        
-        base.OnDisappearing();
-    }
-    
     private async Task DemoOneAsync()
     {
         _logger.LogInformation("DemoOne()");

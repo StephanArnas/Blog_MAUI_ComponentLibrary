@@ -80,13 +80,13 @@ public partial class CButton
         
         if (IsLoading)
         {
-            _lowerAnimation.Commit(this, LowerKey, length: 1000, easing: Easing.CubicInOut, repeat: () => true);
-            _upperAnimation.Commit(this, UpperKey, length: 1000, easing: Easing.CubicInOut, repeat: () => true);
+            _lowerAnimation.Commit(owner: this, name: LowerKey, length: 1000, easing: Easing.CubicInOut, repeat: () => true);
+            _upperAnimation.Commit(owner: this, name: UpperKey, length: 1000, easing: Easing.CubicInOut, repeat: () => true);
         }
         else
         {
-            this.AbortAnimation(LowerKey);
-            this.AbortAnimation(UpperKey);
+            this.AbortAnimation(handle: LowerKey);
+            this.AbortAnimation(handle: UpperKey);
         }
     }
     

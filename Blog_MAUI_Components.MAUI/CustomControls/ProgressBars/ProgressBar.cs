@@ -5,6 +5,8 @@ using SkiaSharp.Views.Maui.Controls;
 
 namespace Blog_MAUI_Components.MAUI.CustomControls.ProgressBars;
 
+// Source: https://github.com/ewerspej/epj.ProgressBar.Maui
+
 public class ProgressBar : SKCanvasView
 {
     private SKCanvas _canvas = null!;
