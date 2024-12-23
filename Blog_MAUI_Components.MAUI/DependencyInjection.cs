@@ -11,9 +11,9 @@ public static class DependencyInjection
     {
         builder.UseSkiaSharp();
         
-        builder.ConfigureMauiHandlers(h =>
+        builder.ConfigureMauiHandlers(handlers =>
         {
-            h.AddHandler<ProgressBar, ProgressBarHandler>();
+            handlers.AddHandler<ProgressBar, ProgressBarHandler>();
         });
         
         return builder;

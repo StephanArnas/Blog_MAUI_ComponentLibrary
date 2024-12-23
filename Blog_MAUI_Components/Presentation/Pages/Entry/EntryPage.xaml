@@ -3,14 +3,13 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ccl="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Labels;assembly=Blog_MAUI_Components.MAUI"
-    xmlns:ccb="clr-namespace:Blog_MAUI_Components.MAUI.CustomControls.Buttons;assembly=Blog_MAUI_Components.MAUI"
     xmlns:page="clr-namespace:Blog_MAUI_Components.Presentation.Pages.Entry"
     xmlns:base="clr-namespace:Blog_MAUI_Components.Presentation.Common"
     Title="Entry Demo"
     x:DataType="page:EntryPageViewModel"
     x:Class="Blog_MAUI_Components.Presentation.Pages.Entry.EntryPage">
     
-    <Grid RowDefinitions="*,Auto" >
+    <Grid RowDefinitions="*,Auto" > 
 
         <ScrollView>
             <VerticalStackLayout
@@ -38,8 +37,6 @@
                     Info="We will never share your email with anyone"
                     Placeholder="E.g: john.doe@gmail.com"
                     ReturnCommand="{Binding SaveCommand}"/>
-                
-                <ccb:CustomButton></ccb:CustomButton>
                 
             </VerticalStackLayout>
         </ScrollView>

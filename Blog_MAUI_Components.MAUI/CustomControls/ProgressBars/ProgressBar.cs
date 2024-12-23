@@ -1,3 +1,4 @@
+using Blog_MAUI_Components.MAUI.Common.Resources;
 using SkiaSharp;
 using SkiaSharp.Views.Maui;
 using SkiaSharp.Views.Maui.Controls;
@@ -6,9 +7,19 @@ namespace Blog_MAUI_Components.MAUI.CustomControls.ProgressBars;
 
 public class ProgressBar : SKCanvasView
 {
-    private SKCanvas _canvas;
+    private SKCanvas _canvas = null!;
     private SKRect _drawRect;
     private SKImageInfo _info;
+
+    public static readonly BindableProperty ProgressProperty = BindableProperty.Create(nameof(Progress), typeof(float), typeof(ProgressBar), 0.0f, propertyChanged: OnBindablePropertyChanged);
+    public static readonly BindableProperty ProgressColorProperty = BindableProperty.Create(nameof(ProgressColor), typeof(Color), typeof(ProgressBar), propertyChanged: OnBindablePropertyChanged);
+    public static readonly BindableProperty GradientColorProperty = BindableProperty.Create(nameof(GradientColor), typeof(Color), typeof(ProgressBar), propertyChanged: OnBindablePropertyChanged);
+    public static readonly BindableProperty BaseColorProperty = BindableProperty.Create(nameof(BaseColor), typeof(Color), typeof(ProgressBar), propertyChanged: OnBindablePropertyChanged);
+    public static readonly BindableProperty UseRangeProperty = BindableProperty.Create(nameof(UseRange), typeof(bool), typeof(ProgressBar), false, propertyChanged: OnBindablePropertyChanged);
+    public static readonly BindableProperty LowerRangeValueProperty = BindableProperty.Create(nameof(LowerRangeValue), typeof(float), typeof(ProgressBar), 0.0f, propertyChanged: OnBindablePropertyChanged);
+    public static readonly BindableProperty UpperRangeValueProperty = BindableProperty.Create(nameof(UpperRangeValue), typeof(float), typeof(ProgressBar), 0.0f, propertyChanged: OnBindablePropertyChanged);
+    public static readonly BindableProperty UseGradientProperty = BindableProperty.Create(nameof(UseGradient), typeof(bool), typeof(ProgressBar), false, propertyChanged: OnBindablePropertyChanged);
+    public static readonly BindableProperty RoundCapsProperty = BindableProperty.Create(nameof(RoundCaps), typeof(bool), typeof(ProgressBar), false, propertyChanged: OnBindablePropertyChanged);
 
     public float Progress
     {
@@ -63,25 +74,50 @@ public class ProgressBar : SKCanvasView
         get => (bool)GetValue(RoundCapsProperty);
         set => SetValue(RoundCapsProperty, value);
     }
-
-    public static readonly BindableProperty ProgressProperty = BindableProperty.Create(nameof(Progress), typeof(float), typeof(ProgressBar), 0.0f, propertyChanged: OnBindablePropertyChanged);
-    public static readonly BindableProperty ProgressColorProperty = BindableProperty.Create(nameof(ProgressColor), typeof(Color), typeof(ProgressBar), Colors.BlueViolet, propertyChanged: OnBindablePropertyChanged);
-    public static readonly BindableProperty GradientColorProperty = BindableProperty.Create(nameof(GradientColor), typeof(Color), typeof(ProgressBar), Colors.BlueViolet, propertyChanged: OnBindablePropertyChanged);
-    public static readonly BindableProperty BaseColorProperty = BindableProperty.Create(nameof(BaseColor), typeof(Color), typeof(ProgressBar), Colors.LightGray, propertyChanged: OnBindablePropertyChanged);
-    public static readonly BindableProperty UseRangeProperty = BindableProperty.Create(nameof(UseRange), typeof(bool), typeof(ProgressBar), false, propertyChanged: OnBindablePropertyChanged);
-    public static readonly BindableProperty LowerRangeValueProperty = BindableProperty.Create(nameof(LowerRangeValue), typeof(float), typeof(ProgressBar), 0.0f, propertyChanged: OnBindablePropertyChanged);
-    public static readonly BindableProperty UpperRangeValueProperty = BindableProperty.Create(nameof(UpperRangeValue), typeof(float), typeof(ProgressBar), 0.0f, propertyChanged: OnBindablePropertyChanged);
-    public static readonly BindableProperty UseGradientProperty = BindableProperty.Create(nameof(UseGradient), typeof(bool), typeof(ProgressBar), false, propertyChanged: OnBindablePropertyChanged);
-    public static readonly BindableProperty RoundCapsProperty = BindableProperty.Create(nameof(RoundCaps), typeof(bool), typeof(ProgressBar), false, propertyChanged: OnBindablePropertyChanged);
-
-    private static void OnBindablePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-    {
-        ((ProgressBar)bindable).InvalidateSurface();
-    }
-
+    
     public ProgressBar()
     {
         IgnorePixelScaling = false;
+        
+        SetProgressColor(Application.Current?.RequestedTheme ?? AppTheme.Unspecified);
+    }
+    
+    private void SetProgressColor(AppTheme theme)
+    {
+        if (Application.Current?.Resources == null)
+        {
+            return;
+        }
+        
+        if (theme == AppTheme.Dark)
+        {
+            if (Application.Current.Resources.TryGetValue(ColorResources.PrimaryDark, out var progressDarkColor))
+            {
+                ProgressColor = (Color)progressDarkColor;
+            }
+            
+            if (Application.Current.Resources.TryGetValue(ColorResources.SecondaryDark, out var baseColorDarkColor))
+            {
+                BaseColor = (Color)baseColorDarkColor;
+            }
+        }
+        else
+        {
+            if (Application.Current.Resources.TryGetValue(ColorResources.Primary, out var progressLightColor))
+            {
+                ProgressColor = (Color)progressLightColor;
+            }
+            
+            if (Application.Current.Resources.TryGetValue(ColorResources.Secondary, out var baseLightColor))
+            {
+                BaseColor = (Color)baseLightColor;
+            }
+        }
+    }
+    
+    private static void OnBindablePropertyChanged(BindableObject bindable, object oldValue, object newValue)
+    {
+        ((ProgressBar)bindable).InvalidateSurface();
     }
 
     protected override void OnPaintSurface(SKPaintSurfaceEventArgs e)
@@ -93,7 +129,7 @@ public class ProgressBar : SKCanvasView
 
         _info = e.Info;
 
-        _drawRect = new SKRect(0, 0, _info.Width, _info.Height);
+        _drawRect = new SKRect(left: 0, top: 0, right: _info.Width, bottom: _info.Height);
 
         DrawBase();
         DrawProgress();
@@ -105,7 +141,7 @@ public class ProgressBar : SKCanvasView
 
         if (RoundCaps)
         {
-            basePath.AddRoundRect(_drawRect, _drawRect.Height / 2, _drawRect.Height / 2);
+            basePath.AddRoundRect(_drawRect, rx: _drawRect.Height / 2, ry: _drawRect.Height / 2);
         }
         else
         {
@@ -126,12 +162,12 @@ public class ProgressBar : SKCanvasView
         using var progressPath = new SKPath();
 
         var progressRect = UseRange
-            ? new SKRect(_info.Width * LowerRangeValue, 0, _info.Width * UpperRangeValue, _info.Height)
-            : new SKRect(0, 0, _info.Width * Progress, _info.Height);
+            ? new SKRect(left: _info.Width * LowerRangeValue, top: 0, right: _info.Width * UpperRangeValue, bottom: _info.Height)
+            : new SKRect(left: 0, top: 0, right: _info.Width * Progress, bottom: _info.Height);
 
         if (RoundCaps)
         {
-            progressPath.AddRoundRect(progressRect, progressRect.Height / 2, progressRect.Height / 2);
+            progressPath.AddRoundRect(progressRect, rx: progressRect.Height / 2, ry: progressRect.Height / 2);
         }
         else
         {
@@ -147,8 +183,8 @@ public class ProgressBar : SKCanvasView
             progressPaint.Shader = SKShader.CreateLinearGradient(
                 new SKPoint(_drawRect.Left, _drawRect.MidY),
                 new SKPoint(_drawRect.Right, _drawRect.MidY),
-                new[] { GradientColor.ToSKColor(), ProgressColor.ToSKColor() },
-                new[] { 0.0f, 1.0f },
+                colors: [GradientColor.ToSKColor(), ProgressColor.ToSKColor()],
+                colorPos: [0.0f, 1.0f],
                 SKShaderTileMode.Clamp
             );
         }

@@ -5,28 +5,18 @@ namespace Blog_MAUI_Components.MAUI.CustomControls.Labels;
 
 public partial class EntryLabel
 {
-    public EntryLabel()
-    {
-        InitializeComponent();
-        
-        Element.SetVisualElementBinding();
-        Element.SetBinding(Entry.TextProperty, "Text", BindingMode.TwoWay);
-        Element.BindingContext = this;
-    }
+    public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(EntryLabel), propertyChanged: TextChanged, defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(EntryLabel), propertyChanged: PlaceholderChanged);
+    public static readonly BindableProperty KeyboardProperty = BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(EntryLabel), defaultValue: Keyboard.Plain, propertyChanged: KeyboardChanged);
+    public static readonly BindableProperty ReturnTypeProperty = BindableProperty.Create(nameof(ReturnType), typeof(ReturnType), typeof(EntryLabel), defaultValue: ReturnType.Done, propertyChanged: ReturnTypeChanged);
+    public static readonly BindableProperty ReturnCommandProperty = BindableProperty.Create(nameof(ReturnCommand), typeof(ICommand), typeof(EntryLabel), defaultValue: null, propertyChanged: ReturnCommandChanged);
+    public static readonly BindableProperty TextTransformProperty = BindableProperty.Create(nameof(TextTransform), typeof(TextTransform), typeof(EntryLabel), defaultValue: TextTransform.Default, propertyChanged: TextTransformChanged);
     
-    public static readonly BindableProperty TextProperty = 
-        BindableProperty.Create(nameof(Text), typeof(string), typeof(EntryLabel), 
-            propertyChanged: TextChanged, defaultBindingMode: BindingMode.TwoWay);
-
     public string Text
     {
         get => (string)GetValue(TextProperty);
         set => SetValue(TextProperty, value);
     }
-
-    public static readonly BindableProperty PlaceholderProperty = 
-        BindableProperty.Create(nameof(Placeholder), typeof(string), typeof(EntryLabel), 
-            propertyChanged: PlaceholderChanged);
 
     public string Placeholder
     {
@@ -34,19 +24,11 @@ public partial class EntryLabel
         set => SetValue(PlaceholderProperty, value);
     }
 
-    public static readonly BindableProperty KeyboardProperty = 
-        BindableProperty.Create(nameof(Keyboard), typeof(Keyboard), typeof(EntryLabel), 
-            defaultValue: Keyboard.Plain, propertyChanged: KeyboardChanged);
-
     public Keyboard Keyboard
     {
         get => (Keyboard)GetValue(KeyboardProperty);
         set => SetValue(KeyboardProperty, value);
     }
-
-    public static readonly BindableProperty ReturnTypeProperty = 
-        BindableProperty.Create(nameof(ReturnType), typeof(ReturnType), typeof(EntryLabel), 
-            defaultValue: ReturnType.Done, propertyChanged: ReturnTypeChanged);
 
     public ReturnType ReturnType
     {
@@ -54,24 +36,25 @@ public partial class EntryLabel
         set => SetValue(ReturnTypeProperty, value);
     }
 
-    public static readonly BindableProperty ReturnCommandProperty = 
-        BindableProperty.Create(nameof(ReturnCommand), typeof(ICommand), typeof(EntryLabel), 
-            defaultValue: null, propertyChanged: ReturnCommandChanged);
-
     public ICommand ReturnCommand
     {
         get => (ICommand)GetValue(ReturnCommandProperty);
         set => SetValue(ReturnCommandProperty, value);
     }
-
-    public static readonly BindableProperty TextTransformProperty = 
-        BindableProperty.Create(nameof(TextTransform), typeof(TextTransform), typeof(EntryLabel), 
-            defaultValue: TextTransform.Default, propertyChanged: TextTransformChanged);
     
     public TextTransform TextTransform
     {
         get => (TextTransform)GetValue(TextTransformProperty);
         set => SetValue(TextTransformProperty, value);
+    }
+    
+    public EntryLabel()
+    {
+        InitializeComponent();
+        
+        Element.SetVisualElementBinding();
+        Element.SetBinding(Entry.TextProperty, nameof(Text), BindingMode.TwoWay);
+        Element.BindingContext = this;
     }
     
     private static void TextChanged(BindableObject bindable, object oldValue, object newValue) => ((EntryLabel)bindable).UpdateTextView();

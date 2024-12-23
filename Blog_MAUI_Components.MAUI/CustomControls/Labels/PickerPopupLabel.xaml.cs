@@ -10,6 +10,49 @@ public partial class PickerPopupLabel
 {
     private CollectionPopup? _collectionPopup;
     private readonly TapGestureRecognizer _tapGestureRecognizer;
+    
+    public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(PickerPopupLabel));
+    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(PickerPopupLabel), propertyChanged: SelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty TapCommandProperty = BindableProperty.Create(nameof(TapCommand), typeof(ICommand), typeof(PickerPopupLabel), defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty ItemDisplayProperty = BindableProperty.Create(nameof(ItemDisplay), typeof(string), typeof(PickerPopupLabel), defaultBindingMode: BindingMode.OneWay);
+    public static readonly BindableProperty DefaultValueProperty = BindableProperty.Create(nameof(DefaultValue), typeof(string), typeof(PickerPopupLabel), propertyChanged: DefaultValueChanged, defaultBindingMode: BindingMode.OneWay);
+    public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(PickerPopupLabel), defaultBindingMode: BindingMode.OneWay);
+
+    public IList? ItemsSource
+    {
+        get => (IList?)GetValue(ItemsSourceProperty);
+        set => SetValue(ItemsSourceProperty, value);
+    }
+
+    public object? SelectedItem
+    {
+        get => GetValue(SelectedItemProperty);
+        set => SetValue(SelectedItemProperty, value);
+    }
+
+    public ICommand? TapCommand
+    {
+        get => (ICommand?)GetValue(TapCommandProperty);
+        set => SetValue(TapCommandProperty, value);
+    }
+
+    public string ItemDisplay
+    {
+        get => (string)GetValue(ItemDisplayProperty);
+        set => SetValue(ItemDisplayProperty, value);
+    }
+
+    public string DefaultValue
+    {
+        get => (string)GetValue(DefaultValueProperty);
+        set => SetValue(DefaultValueProperty, value);
+    }
+
+    public string Title
+    {
+        get => (string)GetValue(TitleProperty);
+        set => SetValue(TitleProperty, value);
+    }
 
     public PickerPopupLabel()
     {
@@ -44,65 +87,6 @@ public partial class PickerPopupLabel
 
         ActionIconSource ??= "chevron_bottom.png";
         ActionIconCommand ??= new Command(() => OnTapped(null, EventArgs.Empty));
-    }
-    
-    public static readonly BindableProperty ItemsSourceProperty = 
-        BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(PickerPopupLabel), 
-            defaultBindingMode: BindingMode.OneWay);
-
-    public IList? ItemsSource
-    {
-        get => (IList?)GetValue(ItemsSourceProperty);
-        set => SetValue(ItemsSourceProperty, value);
-    }
-
-    public static readonly BindableProperty SelectedItemProperty = 
-        BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(PickerPopupLabel), 
-            propertyChanged: SelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
-
-    public object? SelectedItem
-    {
-        get => GetValue(SelectedItemProperty);
-        set => SetValue(SelectedItemProperty, value);
-    }
-
-    public static readonly BindableProperty TapCommandProperty = 
-        BindableProperty.Create(nameof(TapCommand), typeof(ICommand), typeof(PickerPopupLabel), 
-            defaultBindingMode: BindingMode.TwoWay);
-
-    public ICommand? TapCommand
-    {
-        get => (ICommand?)GetValue(TapCommandProperty);
-        set => SetValue(TapCommandProperty, value);
-    }
-
-    public static readonly BindableProperty ItemDisplayProperty = 
-        BindableProperty.Create(nameof(ItemDisplay), typeof(string), typeof(PickerPopupLabel), 
-            defaultBindingMode: BindingMode.OneWay);
-
-    public string ItemDisplay
-    {
-        get => (string)GetValue(ItemDisplayProperty);
-        set => SetValue(ItemDisplayProperty, value);
-    }
-
-    public static readonly BindableProperty DefaultValueProperty = 
-        BindableProperty.Create(nameof(DefaultValue), typeof(string), typeof(PickerPopupLabel), 
-            propertyChanged: DefaultValueChanged, defaultBindingMode: BindingMode.OneWay);
-
-    public string DefaultValue
-    {
-        get => (string)GetValue(DefaultValueProperty);
-        set => SetValue(DefaultValueProperty, value);
-    }
-
-    public static readonly BindableProperty TitleProperty = 
-        BindableProperty.Create(nameof(Title), typeof(string), typeof(PickerPopupLabel));
-
-    public string Title
-    {
-        get => (string)GetValue(TitleProperty);
-        set => SetValue(TitleProperty, value);
     }
 
     private static void SelectedItemChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerPopupLabel)bindable).UpdateSelectedItemView();

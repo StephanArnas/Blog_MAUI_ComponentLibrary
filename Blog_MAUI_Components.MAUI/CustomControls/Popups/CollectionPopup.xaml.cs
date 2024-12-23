@@ -6,6 +6,10 @@ namespace Blog_MAUI_Components.MAUI.CustomControls.Popups;
 
 public partial class CollectionPopup
 {
+    public static readonly BindableProperty TitleProperty = BindableProperty.Create("Title", typeof(string), typeof(CollectionPopup), propertyChanged: TitleChanged, defaultBindingMode: BindingMode.OneWayToSource);
+    public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create("ItemsSource", typeof(IList), typeof(CollectionPopup));
+    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(object), typeof(CollectionPopup), defaultBindingMode: BindingMode.TwoWay);
+
     public CollectionPopup()
     {
         InitializeComponent();
@@ -14,9 +18,6 @@ public partial class CollectionPopup
         tapped.Tapped += (_, _) => Close();
         CloseImage.GestureRecognizers.Add(tapped); 
     }
-    
-    public static readonly BindableProperty TitleProperty = BindableProperty.Create("Title",
-        typeof(string), typeof(CollectionPopup), propertyChanged: TitleChanged, defaultBindingMode: BindingMode.OneWayToSource);
 
     public string Title
     {
@@ -24,17 +25,12 @@ public partial class CollectionPopup
         set => SetValue(TitleProperty, value);
     }
 
-    public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create("ItemsSource",
-        typeof(IList), typeof(CollectionPopup));
-
     public IList? ItemsSource
     {
         get => (IList?)GetValue(ItemsSourceProperty);
         set => SetValue(ItemsSourceProperty, value);
     }
 
-    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem",
-        typeof(object), typeof(CollectionPopup), defaultBindingMode: BindingMode.TwoWay);
 
     public object? SelectedItem
     {

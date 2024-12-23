@@ -11,6 +11,11 @@
             Spacing="25">
             
             <Button
+                Text="Button Demo" 
+                Command="{Binding GoToButtonPageCommand}"
+                HorizontalOptions="Fill" />
+            
+            <Button
                 Text="Entry Demo" 
                 Command="{Binding GoToEntryPageCommand}"
                 HorizontalOptions="Fill" />
