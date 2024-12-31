@@ -11,4 +11,4 @@ By building on this foundation, you can create a variety of custom controls tail
 Remember, while simple solutions may work for small projects, taking the time to implement robust and adaptable controls will pay off as your application grows in complexity.
 
 Full article here : 
-https://www.stephanarnas.com/posts/create-custom-entry-control-with-border
+https://www.stephanarnas.com/posts/maui-create-custom-entry-control-with-border
