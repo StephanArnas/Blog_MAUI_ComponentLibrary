@@ -16,5 +16,5 @@ Happy coding!
 ![Demo](https://www.stephanarnas.com/images/posts/2025-01-06/03.gif)
 
 Full article here : 
-https://www.stephanarnas.com/posts/custom-button-with-progress-bar
+https://www.stephanarnas.com/posts/maui-custom-button-with-progress-bar
 
