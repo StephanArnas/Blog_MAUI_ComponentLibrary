@@ -10,5 +10,7 @@ This combination offers a flexible, reusable component that can easily be adapte
 While this implementation is a great starting point, it’s important to remember that real-world applications often require further customization and refinement. 
 By building on this foundation, you can continue to enhance your controls, ensuring they meet the unique needs of your project.
 
+![Final result](https://www.stephanarnas.com/images/posts/2024-08-26/04.gif)
+
 Full article here : 
-https://www.stephanarnas.com/posts/info-and-error-states-for-entry
+https://www.stephanarnas.com/posts/maui-info-and-error-states-for-entry
