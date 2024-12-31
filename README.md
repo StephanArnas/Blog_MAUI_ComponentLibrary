@@ -20,5 +20,5 @@ Happy coding!
 ![Demo](https://www.stephanarnas.com/images/posts/2024-11-04/02.gif)
 
 Full article here : 
-https://www.stephanarnas.com/posts/extendind-control-behavior-with-button
+https://www.stephanarnas.com/posts/maui-extendind-control-behavior-with-button
 
