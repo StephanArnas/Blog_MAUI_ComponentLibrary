@@ -11,4 +11,4 @@ In this article, we extended our previous work by building a custom PickerPopupL
 ![Demo](https://www.stephanarnas.com/images/posts/2024-09-09/04.gif)
 
 Full article here : 
-https://www.stephanarnas.com/posts/custom-picker-with-collection-view-popup
+https://www.stephanarnas.com/posts/maui-custom-picker-with-collection-view-popup
