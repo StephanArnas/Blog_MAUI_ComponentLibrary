@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Grid 
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ccp="clr-namespace:StephanArnas.Controls.Mobile.MAUI.CustomControls.ProgressBars"
+    xmlns:ccb="clr-namespace:StephanArnas.Controls.Mobile.MAUI.CustomControls.Buttons"
+    x:Class="Blog_MAUI_Components.MAUI.CustomControls.Buttons.CButton"
+    x:DataType="ccb:CButton">
+    
+    <Button
+        x:Name="Button"
+        Clicked="Button_OnClicked"/>
+    
+    <ccp:ProgressBar 
+        x:Name="AnimatedProgressBar"
+        IsVisible="False"
+        Margin="6, 0"
+        HeightRequest="5"
+        UseRange="True"
+        RoundCaps="True"
+        VerticalOptions="End"
+        ProgressColor="{StaticResource PrimaryDark}" />
+    
+</Grid>
