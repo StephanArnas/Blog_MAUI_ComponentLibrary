@@ -1,8 +1,8 @@
 using Microsoft.Extensions.Logging;
 using Sharpnado.TaskLoaderView;
-using StephanArnas.Controls.Mobile.Presentation.Common;
+using StephanArnas.Controls.Presentation.Common;
 
-namespace StephanArnas.Controls.Mobile.Presentation.Pages.Buttons;
+namespace StephanArnas.Controls.Presentation.Pages.Buttons;
 
 public class ButtonPageViewModel : ViewModelBase
 {

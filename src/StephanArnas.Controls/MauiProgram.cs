@@ -1,5 +1,5 @@
 ﻿using StephanArnas.Controls.Infrastructure;
-using StephanArnas.Controls.MAUI;
+using StephanArnas.Controls.Maui;
 using StephanArnas.Controls.Services;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;

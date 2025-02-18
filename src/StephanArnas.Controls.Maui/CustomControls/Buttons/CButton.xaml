@@ -2,9 +2,9 @@
 <Grid 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ccp="clr-namespace:StephanArnas.Controls.Mobile.MAUI.CustomControls.ProgressBars"
-    xmlns:ccb="clr-namespace:StephanArnas.Controls.Mobile.MAUI.CustomControls.Buttons"
-    x:Class="Blog_MAUI_Components.MAUI.CustomControls.Buttons.CButton"
+    xmlns:ccp="clr-namespace:StephanArnas.Controls.Maui.CustomControls.ProgressBars"
+    xmlns:ccb="clr-namespace:StephanArnas.Controls.Maui.CustomControls.Buttons"
+    x:Class="StephanArnas.Controls.Maui.CustomControls.Buttons.CButton"
     x:DataType="ccb:CButton">
     
     <Button

@@ -1,5 +1,4 @@
-﻿using StephanArnas.Controls.MAUI.Common;
-using StephanArnas.Controls.MAUI.Common.Helpers;
+﻿using StephanArnas.Controls.Maui.Common.Helpers;
 
 namespace StephanArnas.Controls;
 
