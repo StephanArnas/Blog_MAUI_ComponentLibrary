@@ -1,8 +1,10 @@
 # How to implement Custom Design System Controls in MAUI 
 
+Did you ever consider building your own custom design system controls in MAUI?
+
 ## But Why ? 
 
-Let’s consider an example: I’m part of a young startup focused on .NET development. 
+Let’s consider an example: I’m part of a company focused on .NET development. 
 We have a limited budget and a tight timeline to ship our product. 
 
 If you decide to use a third-party library, consider the following points: licensing, the presence of experienced contributors, compatibility with the latest .NET versions, bug fix support and platform support.
@@ -16,7 +18,9 @@ Failing to consider these aspects could impact your development in the future.
 
 > I will explain step-by-step how to implement a custom design system in MAUI and how to use my open-source project as an external resource to accelerate the development of your own controls.
 
-# Articles
+*Content is on going to give you a step-by-step guide to implement my project in your solution.*
+
+## Articles
 
 - [MAUI (Library Part 1) Create a Custom Entry using SkiaSharp](maui-create-custom-entry-control-with-border)
 - [MAUI (Library Part 2) Info & Error states with FluentValidation](maui-info-and-error-states-for-entry)
