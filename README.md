@@ -2,7 +2,7 @@
 
 Did you ever consider building your own custom design system controls in MAUI?
 
-## But Why ? 
+## But Why? 
 
 Let’s consider an example: I’m part of a company focused on .NET development. 
 We have a limited budget and a tight timeline to ship our product. 
@@ -11,12 +11,12 @@ If you decide to use a third-party library, consider the following points: licen
 
 In our case, building a custom library makes sense because our team has the expertise to create it. 
 
-> We prefer to avoid third-party libraries to minimize dependencies, simplify maintenance, and ensure a predictable codebase with updates.
+#### We prefer to avoid third-party libraries to minimize dependencies, simplify maintenance, and ensure a predictable codebase with updates.
 
 Be able to integrate future unexpected changes from the Product Owner, such as targeting the Windows platform, which a open-source library might not supported.
 Failing to consider these aspects could impact your development in the future.
 
-> I will explain step-by-step how to implement a custom design system in MAUI and how to use my open-source project as an external resource to accelerate the development of your own controls.
+#### I will explain step-by-step how to implement a custom design system in MAUI and how to use my open-source project as an external resource to accelerate the development of your own controls.
 
 *Content is on going to give you a step-by-step guide to implement my project in your solution.*
 
