@@ -1,15 +1,15 @@
 using System.Collections;
 using System.Windows.Input;
-using StephanArnas.Controls.Maui.CustomControls.Labels.Base;
+using StephanArnas.Controls.Maui.Common.Extensions;
 
 namespace StephanArnas.Controls.Maui.CustomControls.Labels;
 
-public partial class PickerLabel
+public partial class SaPicker
 {
-    public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(PickerLabel), propertyChanged: OnItemsSourceChanged);
-    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(PickerLabel), defaultValue: null, BindingMode.TwoWay, propertyChanged: OnSelectedItemChanged);
-    public static readonly BindableProperty ItemDisplayProperty = BindableProperty.Create(nameof(ItemDisplay), typeof(string), typeof(PickerLabel), propertyChanged: OnItemDisplayBindingChanged, defaultBindingMode: BindingMode.OneWay);
-    public static readonly BindableProperty TapCommandProperty = BindableProperty.Create(nameof(TapCommand), typeof(ICommand), typeof(PickerLabel));
+    public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(SaPicker), propertyChanged: OnItemsSourceChanged);
+    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(SaPicker), defaultValue: null, BindingMode.TwoWay, propertyChanged: OnSelectedItemChanged);
+    public static readonly BindableProperty ItemDisplayProperty = BindableProperty.Create(nameof(ItemDisplay), typeof(string), typeof(SaPicker), propertyChanged: OnItemDisplayBindingChanged, defaultBindingMode: BindingMode.OneWay);
+    public static readonly BindableProperty TapCommandProperty = BindableProperty.Create(nameof(TapCommand), typeof(ICommand), typeof(SaPicker));
 
     public IList ItemsSource
     {
@@ -35,7 +35,7 @@ public partial class PickerLabel
         set => SetValue(TapCommandProperty, value);
     }
     
-    public PickerLabel()
+    public SaPicker()
     {
         InitializeComponent();
         
@@ -45,9 +45,9 @@ public partial class PickerLabel
         Element.BindingContext = this;
     }
     
-    private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerLabel)bindable).OnItemsSourceChanged();
-    private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerLabel)bindable).OnSelectedItemChanged();
-    private static void OnItemDisplayBindingChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerLabel)bindable).OnItemDisplayBindingChanged();
+    private static void OnItemsSourceChanged(BindableObject bindable, object oldValue, object newValue) => ((SaPicker)bindable).OnItemsSourceChanged();
+    private static void OnSelectedItemChanged(BindableObject bindable, object oldValue, object newValue) => ((SaPicker)bindable).OnSelectedItemChanged();
+    private static void OnItemDisplayBindingChanged(BindableObject bindable, object oldValue, object newValue) => ((SaPicker)bindable).OnItemDisplayBindingChanged();
 
     private void OnPickerTapped(object? sender, EventArgs e)
     {

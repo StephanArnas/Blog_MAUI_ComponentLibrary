@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<base:LabelBase 
+<common:LabelBase 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:base="clr-namespace:StephanArnas.Controls.Maui.CustomControls.Labels.Base"
-    x:Class="StephanArnas.Controls.Maui.CustomControls.Labels.PickerPopupLabel">
+    xmlns:common="clr-namespace:StephanArnas.Controls.Maui.Common"
+    x:Class="StephanArnas.Controls.Maui.CustomControls.Labels.SaPickerPopup">
     
-    <base:LabelBase.Resources>
+    <common:LabelBase.Resources>
         <Style x:Key="LabelLabel" TargetType="Label">
             <Setter Property="FontSize" Value="16" />
             <Setter Property="TextColor" Value="{StaticResource Gray950}" />
@@ -15,11 +15,11 @@
             <Setter Property="HorizontalOptions" Value="StartAndExpand" />
             <Setter Property="MinimumHeightRequest" Value="40" />
         </Style>
-    </base:LabelBase.Resources>
+    </common:LabelBase.Resources>
     
-    <base:LabelBase.View>
+    <common:LabelBase.View>
         <Label 
             Style="{StaticResource LabelLabel}" 
             x:Name="Element" />
-    </base:LabelBase.View>
-</base:LabelBase>
+    </common:LabelBase.View>
+</common:LabelBase>

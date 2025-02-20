@@ -6,17 +6,17 @@ using StephanArnas.Controls.Maui.CustomControls.Popups;
 
 namespace StephanArnas.Controls.Maui.CustomControls.Labels;
 
-public partial class PickerPopupLabel
+public partial class SaPickerPopup
 {
     private CollectionPopup? _collectionPopup;
     private readonly TapGestureRecognizer _tapGestureRecognizer;
     
-    public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(PickerPopupLabel));
-    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(PickerPopupLabel), propertyChanged: SelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
-    public static readonly BindableProperty TapCommandProperty = BindableProperty.Create(nameof(TapCommand), typeof(ICommand), typeof(PickerPopupLabel), defaultBindingMode: BindingMode.TwoWay);
-    public static readonly BindableProperty ItemDisplayProperty = BindableProperty.Create(nameof(ItemDisplay), typeof(string), typeof(PickerPopupLabel), defaultBindingMode: BindingMode.OneWay);
-    public static readonly BindableProperty DefaultValueProperty = BindableProperty.Create(nameof(DefaultValue), typeof(string), typeof(PickerPopupLabel), propertyChanged: DefaultValueChanged, defaultBindingMode: BindingMode.OneWay);
-    public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(PickerPopupLabel), defaultBindingMode: BindingMode.OneWay);
+    public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(SaPickerPopup));
+    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create(nameof(SelectedItem), typeof(object), typeof(SaPickerPopup), propertyChanged: SelectedItemChanged, defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty TapCommandProperty = BindableProperty.Create(nameof(TapCommand), typeof(ICommand), typeof(SaPickerPopup), defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty ItemDisplayProperty = BindableProperty.Create(nameof(ItemDisplay), typeof(string), typeof(SaPickerPopup), defaultBindingMode: BindingMode.OneWay);
+    public static readonly BindableProperty DefaultValueProperty = BindableProperty.Create(nameof(DefaultValue), typeof(string), typeof(SaPickerPopup), propertyChanged: DefaultValueChanged, defaultBindingMode: BindingMode.OneWay);
+    public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(SaPickerPopup), defaultBindingMode: BindingMode.OneWay);
 
     public IList? ItemsSource
     {
@@ -54,7 +54,7 @@ public partial class PickerPopupLabel
         set => SetValue(TitleProperty, value);
     }
 
-    public PickerPopupLabel()
+    public SaPickerPopup()
     {
         InitializeComponent();
         
@@ -89,8 +89,8 @@ public partial class PickerPopupLabel
         ActionIconCommand ??= new Command(() => OnTapped(null, EventArgs.Empty));
     }
 
-    private static void SelectedItemChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerPopupLabel)bindable).UpdateSelectedItemView();
-    private static void DefaultValueChanged(BindableObject bindable, object oldValue, object newValue) => ((PickerPopupLabel)bindable).UpdateDefaultValueView();
+    private static void SelectedItemChanged(BindableObject bindable, object oldValue, object newValue) => ((SaPickerPopup)bindable).UpdateSelectedItemView();
+    private static void DefaultValueChanged(BindableObject bindable, object oldValue, object newValue) => ((SaPickerPopup)bindable).UpdateDefaultValueView();
 
     private void UpdateSelectedItemView()
     {

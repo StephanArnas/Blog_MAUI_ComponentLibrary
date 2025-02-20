@@ -4,14 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ccp="clr-namespace:StephanArnas.Controls.Maui.CustomControls.ProgressBars"
     xmlns:ccb="clr-namespace:StephanArnas.Controls.Maui.CustomControls.Buttons"
-    x:Class="StephanArnas.Controls.Maui.CustomControls.Buttons.CButton"
-    x:DataType="ccb:CButton">
+    x:Class="StephanArnas.Controls.Maui.CustomControls.Buttons.SaButton"
+    x:DataType="ccb:SaButton">
     
     <Button
         x:Name="Button"
         Clicked="Button_OnClicked"/>
     
-    <ccp:ProgressBar 
+    <ccp:SaProgressBar 
         x:Name="AnimatedProgressBar"
         IsVisible="False"
         Margin="6, 0"

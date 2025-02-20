@@ -2,7 +2,7 @@ using System.Windows.Input;
 
 namespace StephanArnas.Controls.Maui.CustomControls.Buttons;
 
-public partial class CButton
+public partial class SaButton
 {
     private const string LowerKey = "lower";
     private const string UpperKey = "upper";
@@ -10,10 +10,10 @@ public partial class CButton
     private readonly Animation _lowerAnimation;
     private readonly Animation _upperAnimation;
 
-    public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(CButton), defaultBindingMode: BindingMode.OneWay, propertyChanged: TextChanged);
-    public static readonly BindableProperty IsLoadingProperty = BindableProperty.Create(nameof(IsLoading), typeof(bool), typeof(CButton), defaultBindingMode: BindingMode.OneWay, propertyChanged: IsLoadingChanged);
-    public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(CButton));
-    public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(CButton));
+    public static readonly BindableProperty TextProperty = BindableProperty.Create(nameof(Text), typeof(string), typeof(SaButton), defaultBindingMode: BindingMode.OneWay, propertyChanged: TextChanged);
+    public static readonly BindableProperty IsLoadingProperty = BindableProperty.Create(nameof(IsLoading), typeof(bool), typeof(SaButton), defaultBindingMode: BindingMode.OneWay, propertyChanged: IsLoadingChanged);
+    public static readonly BindableProperty CommandProperty = BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(SaButton));
+    public static readonly BindableProperty CommandParameterProperty = BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(SaButton));
     
     public string Text
     {
@@ -39,7 +39,7 @@ public partial class CButton
         set => SetValue(CommandParameterProperty, value);
     }
     
-    public CButton()
+    public SaButton()
     {
         InitializeComponent();
         
@@ -47,8 +47,8 @@ public partial class CButton
         _upperAnimation = new Animation(v => AnimatedProgressBar.UpperRangeValue = (float)v, start: 0.0, end: 1.4);
     }
     
-    private static void TextChanged(BindableObject bindable, object oldValue, object newValue) => ((CButton)bindable).UpdateTextView();
-    private static void IsLoadingChanged(BindableObject bindable, object oldValue, object newValue) => ((CButton)bindable).UpdateIsLoadingView();
+    private static void TextChanged(BindableObject bindable, object oldValue, object newValue) => ((SaButton)bindable).UpdateTextView();
+    private static void IsLoadingChanged(BindableObject bindable, object oldValue, object newValue) => ((SaButton)bindable).UpdateIsLoadingView();
     
     private void Button_OnClicked(object? sender, EventArgs e)
     {

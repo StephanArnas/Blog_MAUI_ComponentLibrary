@@ -4,13 +4,13 @@ using StephanArnas.Controls.Maui.MarkupExtensions;
 
 namespace StephanArnas.Controls.Maui.CustomControls.Popups;
 
-public partial class CollectionPopup
+public partial class SaCollectionPopup
 {
-    public static readonly BindableProperty TitleProperty = BindableProperty.Create("Title", typeof(string), typeof(CollectionPopup), propertyChanged: TitleChanged, defaultBindingMode: BindingMode.OneWayToSource);
-    public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create("ItemsSource", typeof(IList), typeof(CollectionPopup));
-    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(object), typeof(CollectionPopup), defaultBindingMode: BindingMode.TwoWay);
+    public static readonly BindableProperty TitleProperty = BindableProperty.Create("Title", typeof(string), typeof(SaCollectionPopup), propertyChanged: TitleChanged, defaultBindingMode: BindingMode.OneWayToSource);
+    public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create("ItemsSource", typeof(IList), typeof(SaCollectionPopup));
+    public static readonly BindableProperty SelectedItemProperty = BindableProperty.Create("SelectedItem", typeof(object), typeof(SaCollectionPopup), defaultBindingMode: BindingMode.TwoWay);
 
-    public CollectionPopup()
+    public SaCollectionPopup()
     {
         InitializeComponent();
         
@@ -39,7 +39,7 @@ public partial class CollectionPopup
     }
 
     public static readonly BindableProperty ItemDisplayProperty = BindableProperty.Create("ItemDisplay",
-        typeof(string), typeof(CollectionPopup), defaultBindingMode: BindingMode.OneWayToSource);
+        typeof(string), typeof(SaCollectionPopup), defaultBindingMode: BindingMode.OneWayToSource);
 
     public string? ItemDisplay
     {
@@ -51,7 +51,7 @@ public partial class CollectionPopup
         }
     }
 
-    private static void TitleChanged(BindableObject bindable, object oldValue, object newValue) => ((CollectionPopup)bindable).UpdateTitleView();
+    private static void TitleChanged(BindableObject bindable, object oldValue, object newValue) => ((SaCollectionPopup)bindable).UpdateTitleView();
 
     private void UpdateTitleView() => TitleLabel.Text = Title;
 
