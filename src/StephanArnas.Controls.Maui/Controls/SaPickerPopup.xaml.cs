@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Windows.Input;
-using StephanArnas.Controls.Maui.Common.Extensions;
 using CommunityToolkit.Maui.Views;
-using StephanArnas.Controls.Maui.CustomControls.Popups;
+using StephanArnas.Controls.Maui.Common.Extensions;
+using StephanArnas.Controls.Maui.Controls.Popups;
 
-namespace StephanArnas.Controls.Maui.CustomControls.Labels;
+namespace StephanArnas.Controls.Maui.Controls;
 
 public partial class SaPickerPopup
 {
-    private CollectionPopup? _collectionPopup;
+    private SaCollectionPopup? _collectionPopup;
     private readonly TapGestureRecognizer _tapGestureRecognizer;
     
     public static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(SaPickerPopup));
@@ -66,7 +66,7 @@ public partial class SaPickerPopup
     
     private void OnTapped(object? sender, EventArgs e)
     {
-        _collectionPopup = new CollectionPopup
+        _collectionPopup = new SaCollectionPopup
         {
             BindingContext = this,
             Title = !string.IsNullOrEmpty(Title) ? Title : Label,
@@ -75,8 +75,8 @@ public partial class SaPickerPopup
             ItemDisplay = ItemDisplay,
         };
 
-        _collectionPopup.SetBinding(CollectionPopup.SelectedItemProperty, "SelectedItem");
-        _collectionPopup.SetBinding(CollectionPopup.ItemsSourceProperty, "ItemsSource");
+        _collectionPopup.SetBinding(SaCollectionPopup.SelectedItemProperty, "SelectedItem");
+        _collectionPopup.SetBinding(SaCollectionPopup.ItemsSourceProperty, "ItemsSource");
 
         Shell.Current.ShowPopup(_collectionPopup);
     }

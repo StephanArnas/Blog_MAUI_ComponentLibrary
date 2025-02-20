@@ -2,9 +2,9 @@
 <base:ContentPageBase
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ccl="clr-namespace:StephanArnas.Controls.Maui.CustomControls.Labels;assembly=StephanArnas.Controls.Maui"
     xmlns:page="clr-namespace:StephanArnas.Controls.Presentation.Pages.Entry"
     xmlns:base="clr-namespace:StephanArnas.Controls.Presentation.Common"
+    xmlns:controls="clr-namespace:StephanArnas.Controls.Maui.Controls;assembly=StephanArnas.Controls.Maui"
     Title="Entry Demo"
     x:DataType="page:EntryPageViewModel"
     x:Class="StephanArnas.Controls.Presentation.Pages.Entry.EntryPage">
@@ -16,7 +16,7 @@
                 Margin="16, 32"
                 Spacing="25">
                 
-                <ccl:EntryLabel
+                <controls:SaEntry
                     Label="First name or Last name"
                     Text="{Binding FullName, Mode=TwoWay}"
                     Error="{Binding ValidationResult, 
@@ -27,7 +27,7 @@
                     ActionIconSource="info.png" 
                     ActionIconCommand="{Binding FullnameInfoCommand}"/>
 
-                <ccl:EntryLabel
+                <controls:SaEntry
                     Label="Email"
                     Text="{Binding Email, Mode=TwoWay}"
                     Error="{Binding ValidationResult, 

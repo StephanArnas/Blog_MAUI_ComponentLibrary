@@ -2,7 +2,7 @@ using System.Collections;
 using System.Windows.Input;
 using StephanArnas.Controls.Maui.Common.Extensions;
 
-namespace StephanArnas.Controls.Maui.CustomControls.Labels;
+namespace StephanArnas.Controls.Maui.Controls;
 
 public partial class SaPicker
 {

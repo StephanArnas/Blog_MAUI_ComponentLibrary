@@ -1,6 +1,6 @@
 using System.Windows.Input;
 
-namespace StephanArnas.Controls.Maui.CustomControls.Buttons;
+namespace StephanArnas.Controls.Maui.Controls;
 
 public partial class SaButton
 {

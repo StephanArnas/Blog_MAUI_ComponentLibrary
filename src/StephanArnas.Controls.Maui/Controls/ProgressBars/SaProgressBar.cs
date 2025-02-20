@@ -3,7 +3,7 @@ using SkiaSharp.Views.Maui;
 using SkiaSharp.Views.Maui.Controls;
 using StephanArnas.Controls.Maui.Common.Resources;
 
-namespace StephanArnas.Controls.Maui.CustomControls.ProgressBars;
+namespace StephanArnas.Controls.Maui.Controls.ProgressBars;
 
 // Source: https://github.com/ewerspej/epj.SaProgressBar.Maui
 

@@ -3,7 +3,7 @@ using SkiaSharp;
 using SkiaSharp.Views.Maui;
 using StephanArnas.Controls.Maui.Common.Helpers;
 
-namespace StephanArnas.Controls.Maui.CustomControls.Labels.Base;
+namespace StephanArnas.Controls.Maui.Common;
 
 public partial class LabelBase
 {

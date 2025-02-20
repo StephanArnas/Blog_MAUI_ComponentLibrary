@@ -3,13 +3,13 @@
 <toolkit:Popup
     HorizontalOptions="Fill"
     VerticalOptions="End"
-    x:Class="StephanArnas.Controls.Maui.CustomControls.Popups.SaCollectionPopup"
+    x:Class="StephanArnas.Controls.Maui.Controls.Popups.SaCollectionPopup"
     x:Name="This"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:StephanArnas.Controls.Maui.CustomControls.Popups"
-    xmlns:markup="clr-namespace:StephanArnas.Controls.Maui.MarkupExtensions">
+    xmlns:markup="clr-namespace:StephanArnas.Controls.Maui.MarkupExtensions"
+    xmlns:controls="clr-namespace:StephanArnas.Controls.Maui.Controls.Popups">
     
     <toolkit:Popup.Resources>
         <Style TargetType="Grid" x:Key="BottomPopupRootGrid">

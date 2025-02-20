@@ -1,5 +1,5 @@
 using SkiaSharp.Views.Maui.Controls.Hosting;
-using StephanArnas.Controls.Maui.CustomControls.ProgressBars;
+using StephanArnas.Controls.Maui.Controls.ProgressBars;
 using ProgressBar = Microsoft.Maui.Controls.ProgressBar;
 
 namespace StephanArnas.Controls.Maui;
@@ -12,7 +12,7 @@ public static class DependencyInjection
         
         builder.ConfigureMauiHandlers(handlers =>
         {
-            handlers.AddHandler<ProgressBar, ProgressBarHandler>();
+            handlers.AddHandler<ProgressBar, SaProgressBarHandler>();
         });
         
         return builder;

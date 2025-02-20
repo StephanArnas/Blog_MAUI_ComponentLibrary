@@ -2,7 +2,7 @@ using System.Collections;
 using StephanArnas.Controls.Maui.Common.Helpers;
 using StephanArnas.Controls.Maui.MarkupExtensions;
 
-namespace StephanArnas.Controls.Maui.CustomControls.Popups;
+namespace StephanArnas.Controls.Maui.Controls.Popups;
 
 public partial class SaCollectionPopup
 {

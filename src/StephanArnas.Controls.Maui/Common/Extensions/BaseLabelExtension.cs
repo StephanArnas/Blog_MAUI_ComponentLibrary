@@ -1,4 +1,4 @@
-namespace StephanArnas.Controls.Maui.CustomControls.Labels.Base;
+namespace StephanArnas.Controls.Maui.Common.Extensions;
 
 public static class BaseLabelExtension
 {

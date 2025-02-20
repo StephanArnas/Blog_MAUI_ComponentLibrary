@@ -3,9 +3,9 @@
 <base:ContentPageBase
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:ccl="clr-namespace:StephanArnas.Controls.Maui.CustomControls.Labels;assembly=StephanArnas.Controls.Maui"
     xmlns:base="clr-namespace:StephanArnas.Controls.Presentation.Common"
     xmlns:page="clr-namespace:StephanArnas.Controls.Presentation.Pages.Pickers"
+    xmlns:controls="clr-namespace:StephanArnas.Controls.Maui.Controls;assembly=StephanArnas.Controls.Maui"
     Title="Picker Demo"
     x:DataType="page:PickerPageViewModel"
     x:Class="StephanArnas.Controls.Presentation.Pages.Pickers.PickerPage">
@@ -16,7 +16,7 @@
                 Margin="16, 32"
                 Spacing="25">
                 
-                <ccl:PickerLabel
+                <controls:SaPicker
                     Label="Country"
                     SelectedItem="{Binding Country}"
                     ItemsSource="{Binding CountriesLoader.Result}" 
@@ -24,7 +24,7 @@
                     TapCommand="{Binding CountrySelectedCommand}"
                     ShowLoader="{Binding CountriesLoader.ShowLoader}" />
                 
-                <ccl:PickerLabel
+                <controls:SaPicker
                     Label="City"
                     SelectedItem="{Binding City}"
                     ItemsSource="{Binding CitiesLoader.Result}"
